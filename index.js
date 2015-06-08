@@ -25,8 +25,6 @@ app.get('/', function (req, res, next) {
 
 app.post('/entry',function(req,res){
 
-    console.log('Post start');
-
     var date = req.body.date;
     var starttime = req.body.starttime;
     var endtime = req.body.endtime;
@@ -50,8 +48,6 @@ app.post('/entry',function(req,res){
 
 
     db.serialize(function() {
-
-        console.log('serialize start');
 
         var stmt = "INSERT INTO entries ('date','start-time','end-time','project','category','sub-category','tags','effectiveness','notes') VALUES (" + date + "," + starttime + ","+ endtime +","+ project +","+ category +","+ subcategory +","+ tags +","+ effectiveness +","+ notes +") ";
 
