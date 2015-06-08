@@ -3,7 +3,7 @@ body {
   font-family: 'inconsolata', monospace;
 }
 
-.form {
+form {
   width: 400px;
   height: 550px;
   border: 1px solid black;

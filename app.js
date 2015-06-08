@@ -1,5 +1,6 @@
 var express = require('express');
 var exphbs  = require('express-handlebars');
+var bodyParser = require("body-parser");
 var sqlite3 = require("sqlite3").verbose();
 
 var app = express();
@@ -10,65 +11,47 @@ var file = "data/data.db";
 var exists = fs.existsSync(file);
 
 if(!exists) {
-console.log("Creating DB file.");
-fs.openSync(file, "w");
+    console.log("Error : DB file is missing");
 }
 
-var db = new sqlite3.Database(file);
-
-db.serialize(function() {
-    if(!exists) {
-
-        var query = "CREATE TABLE entries
-                  ( entry_id number(10),
-                    date DATETIME NOT NULL DEFAULT,
-                    start_time 
-                  )"
-
-        db.run(query);
-    }
-
-
 // Handlebars-express instance
-var hbs = exphbs.create({
-
-    helpers: {
-        getEntries : function() {
-
-            var posts = [];
-            db.serialize(function() {
-                db.each("SELECT * FROM entries", function(err, row) {
-                    posts.push({title: row.post_title, date: row.post_date, text: row.post_text})
-            }
-        }
-    }
-});
-
+var hbs = exphbs.create({ });
 
 app.engine('handlebars', exphbs({defaultLayout: 'main'}));
 app.set('view engine', 'handlebars');
 
 app.use(express.static(__dirname + '/public'))
+app.use(bodyParser.urlencoded({ extended: false }));
 
-app.get('/', function (req, res) {
-    res.render('home');
+app.get('/', function (req, res, next) {
+    res.render('home', {
+
+        helpers: {
+
+        }
+    });
 });
 
-var stmt = db.prepare("INSERT INTO Stuff VALUES (?)");
+app.post('/entry',function(req,res){
 
-//Insert random data
-var rnd;
-for (var i = 0; i < 10; i++) {
-  rnd = Math.floor(Math.random() * 10000000);
-  stmt.run("Thing #" + rnd);
-}
+    var user_name = req.body.date;
+    var password = req.body.starttime;
 
-stmt.finalize();
-db.each("SELECT rowid AS id, thing FROM Stuff", function(err, row) {
-  console.log(row.id + ": " + row.thing);
+    var db = new sqlite3.Database(file);
+
+    db.serialize(function() {
+
+        // var date = db.date();
+
+        db.run("INSERT INTO entries VALUES ('date',5,6,'project','category','sub-category','tags',1,'notes') ");
+    });
+
+    db.close();
+
+    console.log("Entry posted.");
+
+    res.end("yes");
 });
-});
-
 
 var server = app.listen(6001, function () {
 
