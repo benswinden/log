@@ -7,17 +7,17 @@ $(document).ready(function(){
     var mm = currentDate.getMonth()+1; //January is 0!
     var yyyy = currentDate.getFullYear();
 
-    if(dd<10) {
-        dd='0'+dd
+    if(dd < 10 ) {
+        dd = '0' + dd;
     }
 
-    if(mm<10) {
-        mm='0'+mm
+    if(mm < 10) {
+        mm = '0' + mm;
     }
 
     currentDate = yyyy + '.' + mm + '.' + dd;
 
-    $('#date').val(currentDate)
+    $('#date').val(currentDate);
 
 
     $("#form").submit( function(event ) {
