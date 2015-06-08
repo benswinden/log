@@ -1,6 +1,25 @@
 
 $(document).ready(function(){
 
+    // Get the current date
+    var currentDate = new Date();
+    var dd = currentDate.getDate();
+    var mm = currentDate.getMonth()+1; //January is 0!
+    var yyyy = currentDate.getFullYear();
+
+    if(dd<10) {
+        dd='0'+dd
+    }
+
+    if(mm<10) {
+        mm='0'+mm
+    }
+
+    currentDate = yyyy + '.' + mm + '.' + dd;
+
+    $('#date').val(currentDate)
+
+
     $("#form").submit( function(event ) {
         postEntry();
         event.preventDefault();
@@ -9,15 +28,22 @@ $(document).ready(function(){
 
 function postEntry() {
 
-    var date,starttime,end,project,category,subcategory,tags,effect,notes;
+    var date = "'" +  $("#date").val() + "'";
+    var starttime = "'" + $("#starttime").val() + "'";
+    var endtime = "'" + $("#endtime").val() + "'";
+    var project = "'" + $("#project").val() + "'";
+    var category = "'" + $("#category").val() + "'";
+    var subcategory = "'" + $("#subcategory").val() + "'";
+    var tags = "'" + $("#tags").val() + "'";
+    var effectiveness = "'" + $("#effectiveness").val() + "'";
+    var notes = "'" + $("#notes").val() + "'";
 
-    date = $("#date").val();
-    starttime = $("#start").val();
 
-    $.post("http://localhost:6001/entry",{date: date,starttime: starttime}, function(data){
+    $.post("http://localhost:6001/entry",{date: date,starttime: starttime,endtime: endtime,project: project,category: category,subcategory: subcategory,tags: tags,effectiveness: effectiveness,notes: notes}, function(data){
 
-        if( data === 'yes') {
-            //alert("login success");
+        // Callback
+        if( data === 'complete') {
+            //alert("Complete");
         }
     });
 

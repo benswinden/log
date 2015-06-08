@@ -5,15 +5,6 @@ var sqlite3 = require("sqlite3").verbose();
 
 var app = express();
 
-  // Database
-var fs = require("fs");
-var file = "data/data.db";
-var exists = fs.existsSync(file);
-
-if(!exists) {
-    console.log("Error : DB file is missing");
-}
-
 // Handlebars-express instance
 var hbs = exphbs.create({ });
 
@@ -34,23 +25,38 @@ app.get('/', function (req, res, next) {
 
 app.post('/entry',function(req,res){
 
-    var user_name = req.body.date;
-    var password = req.body.starttime;
+    var date = req.body.date;
+    var starttime = req.body.starttime;
+    var endtime = req.body.endtime;
+    var project = req.body.project;
+    var category = req.body.category;
+    var subcategory = req.body.subcategory;
+    var tags = req.body.tags;
+    var effectiveness = req.body.effectiveness;
+    var notes = req.body.notes;
+
+    var fs = require("fs");
+    var file = "data/data.db";
+    var exists = fs.existsSync(file);
+
+    if(!exists) {
+        console.log("Error : DB file is missing");
+    }
 
     var db = new sqlite3.Database(file);
 
+
+
     db.serialize(function() {
 
-        // var date = db.date();
+        var stmt = "INSERT INTO entries ('date','start-time','end-time','project','category','sub-category','tags','effectiveness','notes') VALUES (" + date + "," + starttime + ","+ endtime +","+ project +","+ category +","+ subcategory +","+ tags +","+ effectiveness +","+ notes +") ";
 
-        db.run("INSERT INTO entries VALUES ('date',5,6,'project','category','sub-category','tags',1,'notes') ");
+        db.run(stmt);
     });
 
     db.close();
 
-    console.log("Entry posted.");
-
-    res.end("yes");
+    res.end("complete");
 });
 
 var server = app.listen(6001, function () {
