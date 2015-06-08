@@ -33,14 +33,13 @@ function postEntry() {
     var endtime = "'" + $("#endtime").val() + "'";
     var project = "'" + $("#project").val() + "'";
     var category = "'" + $("#category").val() + "'";
-    var subcategory = "'" + $("#subcategory").val() + "'";
     var tags = "'" + $("#tags").val() + "'";
     var effectiveness = "'" + $("#effectiveness").val() + "'";
     var notes = "'" + $("#notes").val() + "'";
 
     //alert(document.domain);
 
-    $.post("/entry",{date: date,starttime: starttime,endtime: endtime,project: project,category: category,subcategory: subcategory,tags: tags,effectiveness: effectiveness,notes: notes}, function(data){
+    $.post("/entry",{date: date,starttime: starttime,endtime: endtime,project: project,category: category,tags: tags,effectiveness: effectiveness,notes: notes}, function(data){
 
         // Callback
         if( data === 'complete') {

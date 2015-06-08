@@ -30,7 +30,7 @@ app.post('/entry',function(req,res){
     var endtime = req.body.endtime;
     var project = req.body.project;
     var category = req.body.category;
-    var subcategory = req.body.subcategory;
+
     var tags = req.body.tags;
     var effectiveness = req.body.effectiveness;
     var notes = req.body.notes;
@@ -49,7 +49,7 @@ app.post('/entry',function(req,res){
 
     db.serialize(function() {
 
-        var stmt = "INSERT INTO entries ('date','start-time','end-time','project','category','sub-category','tags','effectiveness','notes') VALUES (" + date + "," + starttime + ","+ endtime +","+ project +","+ category +","+ subcategory +","+ tags +","+ effectiveness +","+ notes +") ";
+        var stmt = "INSERT INTO entries ('date','start-time','end-time','project','category','tags','effectiveness','notes') VALUES (" + date + "," + starttime + ","+ endtime +","+ project +","+ category +","+ tags +","+ effectiveness +","+ notes +") ";
 
         db.run(stmt);
     });
