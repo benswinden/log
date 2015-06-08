@@ -43,7 +43,16 @@ function postEntry() {
 
         // Callback
         if( data === 'complete') {
-            //alert("Complete");
+
+            // Clear the form
+            $("#date").val("");
+            $("#starttime").val("");
+            $("#endtime").val("");
+            $("#project").val("");
+            $("#category").val("");
+            $("#tags").val("");
+            $("#effectiveness").val("");
+            $("#notes").val("");                    
         }
     });
 
