@@ -43,7 +43,7 @@ function postEntry() {
 
         // Callback
         if( data === 'complete') {
-            //alert("Complete");
+            alert("Complete");
         }
     });
 
