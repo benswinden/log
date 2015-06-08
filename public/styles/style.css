@@ -1,0 +1,31 @@
+body {
+  color: black;
+  font-family: 'inconsolata', monospace;
+}
+
+.form {
+  width: 400px;
+  height: 550px;
+  border: 1px solid black;
+}
+
+ul {
+  list-style: none;
+}
+
+li {
+  width: 250px;
+}
+
+input[type=submit] {
+    width: 75px;
+    height: 25px;
+    margin-left: 65px;
+    font-family: 'inconsolata', monospace;
+    padding:5px 15px;
+    background:#ccc;
+    border:0 none;
+    cursor:pointer;
+    -webkit-border-radius: 5px;
+    border-radius: 5px; }
+}
