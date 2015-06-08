@@ -38,8 +38,9 @@ function postEntry() {
     var effectiveness = "'" + $("#effectiveness").val() + "'";
     var notes = "'" + $("#notes").val() + "'";
 
+    //alert(document.domain);
 
-    $.post("http://localhost:6001/entry",{date: date,starttime: starttime,endtime: endtime,project: project,category: category,subcategory: subcategory,tags: tags,effectiveness: effectiveness,notes: notes}, function(data){
+    $.post("/entry",{date: date,starttime: starttime,endtime: endtime,project: project,category: category,subcategory: subcategory,tags: tags,effectiveness: effectiveness,notes: notes}, function(data){
 
         // Callback
         if( data === 'complete') {
