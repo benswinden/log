@@ -52,7 +52,7 @@ function postEntry() {
             $("#category").val("");
             $("#tags").val("");
             $("#effectiveness").val("");
-            $("#notes").val("");                    
+            $("#notes").val("");
         }
     });
 
