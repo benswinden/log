@@ -92,7 +92,7 @@ app.post('/projects',function(req,res){
                     dbData.tag[0] = tagList[tagListIndex];
 
                     // Check against all tags already found and listed
-                    for (var storedTagListIndex = 0; storedTagListIndex < dbData.tag.length; storedTagListIndex++) { 
+                    for (var storedTagListIndex = 0; storedTagListIndex < dbData.tag.length; storedTagListIndex++) {
 
                         if (dbData.tag[storedTagListIndex] == tagList[tagListIndex]) {
                             found = true;
@@ -101,7 +101,7 @@ app.post('/projects',function(req,res){
                     }
 
                     if (!found) {
-                        console.log(tagList[tagListIndex]);
+                        
                         dbData.tag.push(tagList[tagListIndex]);
                     }
                 }

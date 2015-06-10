@@ -36,8 +36,6 @@ function projects() {
 
         if( data != null) {
 
-            console.log(data.tag);
-
             $( "#project" ).autocomplete({
                 source: data.projects
             });
@@ -59,14 +57,24 @@ function postEntry() {
     var endtime = "'" + $("#endtime").val() + "'";
     var project = "'" + $("#project").val() + "'";
     var category = "'" + $("#category").val() + "'";
-    var tags = "'" + $("#tags").val() + "'";
+    var tags = "";
     var effectiveness = "'" + $("#effectiveness").val() + "'";
     var notes = "'" + $("#notes").val() + "'";
 
     // Get tags
-    var tags = "'" + $('#tags').data('tags') + "'";
+    var tagsArray = $('#tags').data('tags');
 
-    alert(tags);
+    for (var i = 0; i < tagsArray.length; i++) {
+
+        if (i == 0)
+            tags += tagsArray[i].text;
+        else
+            tags += "," + tagsArray[i].text;
+    }
+
+    tags = "'" + tags + "'";
+
+    console.log("STRING: " + tags);
 
     $.post("/entry",{date: date,starttime: starttime,endtime: endtime,project: project,category: category,tags: tags,effectiveness: effectiveness,notes: notes}, function(data){
 
@@ -74,7 +82,6 @@ function postEntry() {
         if( data === 'complete') {
 
             // Clear the form
-            $("#date").val("");
             $("#starttime").val("");
             $("#endtime").val("");
             $("#project").val("");
@@ -82,6 +89,9 @@ function postEntry() {
             $("#tags").val("");
             $("#effectiveness").val("");
             $("#notes").val("");
+
+            // Clear tags
+            $('#tags').clearAllTags();
         }
     });
 
