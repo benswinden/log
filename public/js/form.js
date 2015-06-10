@@ -1,6 +1,8 @@
 
 $(document).ready(function(){
 
+    init();
+
     // Get the current date
     var currentDate = new Date();
     var dd = currentDate.getDate();
@@ -19,12 +21,29 @@ $(document).ready(function(){
 
     $('#date').val(currentDate);
 
-
+    // On submit
     $("#form").submit( function(event ) {
         postEntry();
         event.preventDefault();
     });
 });
+
+// Query the database and initialize all elements that use information from it
+function init() {
+
+
+    $.post("/init", function(data){
+
+        if( data != null) {
+
+            $( "#project" ).autocomplete({
+                source: data
+            });
+
+            $("#form").css("display", "block");
+        }
+    });
+}
 
 function postEntry() {
 
@@ -36,8 +55,6 @@ function postEntry() {
     var tags = "'" + $("#tags").val() + "'";
     var effectiveness = "'" + $("#effectiveness").val() + "'";
     var notes = "'" + $("#notes").val() + "'";
-
-    //alert(document.domain);
 
     $.post("/entry",{date: date,starttime: starttime,endtime: endtime,project: project,category: category,tags: tags,effectiveness: effectiveness,notes: notes}, function(data){
 

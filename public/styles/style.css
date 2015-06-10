@@ -4,6 +4,7 @@ body {
 }
 
 form {
+    display: none;
   width: 400px;
   height: 550px;
   border: 1px solid black;
