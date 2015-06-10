@@ -24,7 +24,7 @@ app.get('/', function (req, res, next) {
     });
 });
 
-app.post('/init',function(req,res){
+app.post('/projects',function(req,res){
 
     var fs = require("fs");
     var file = "data/data.db";
@@ -36,7 +36,9 @@ app.post('/init',function(req,res){
 
     var db = new sqlite3.Database(file);
 
-    var projects = [];
+    var dbData = new Object();
+    dbData.projects = [];
+    dbData.tag = [];
 
     db.serialize(function() {
 
@@ -52,33 +54,69 @@ app.post('/init',function(req,res){
 
             index++;
 
-            var found = false;
+                // Grab the project and check whether it has been stored already
+            if (row.project != '') {
 
-            if (projects.length == 0)
-                projects[0] = row.project;
+                var found = false;
 
-            for (var i = 0; i < projects.length; i++) {
+                if (dbData.projects.length == 0)
+                dbData.projects[0] = row.project;
 
-                if (projects[i] == row.project) {
-                    found = true;
-                    break;
+                for (var i = 0; i < dbData.projects.length; i++) {
+
+                    if (dbData.projects[i] == row.project) {
+                        found = true;
+                        break;
+                    }
+                }
+
+                if (!found) {
+
+                    dbData.projects.push(row.project);
                 }
             }
 
-            if (!found) {
+                // Grab the tag and check whether it has been stored already
 
-                projects.push(row.project);
+            // Split the tag string coming from the database since it contains many tags
+            var tagList = row.tags.split(',');
+
+            // Iterate through each tag found in the DB
+            for (var tagListIndex = 0; tagListIndex < tagList.length; tagListIndex++) {
+
+                if (tagList[tagListIndex] != '') {
+
+                    var found = false;
+
+                    if (dbData.tag.length == 0)
+                    dbData.tag[0] = tagList[tagListIndex];
+
+                    // Check against all tags already found and listed
+                    for (var storedTagListIndex = 0; storedTagListIndex < dbData.tag.length; storedTagListIndex++) {
+
+                        if (dbData.tag[storedTagListIndex] == tagList[tagListIndex]) {
+                            found = true;
+                            break;
+                        }
+                    }
+
+                    if (!found) {
+                        console.log(tagList[tagListIndex]);
+                        dbData.tag.push(tagList[tagListIndex]);
+                    }
+                }
             }
 
             // Wait until all entries have been read before proceding
             if (index >= entryNum) {
 
                 db.close();
-                res.send(projects);
+                res.send(dbData);
             }
         });
     });
 });
+
 
 app.post('/entry',function(req,res){
 

@@ -1,7 +1,7 @@
 
 $(document).ready(function(){
 
-    init();
+    projects();
 
     // Get the current date
     var currentDate = new Date();
@@ -28,16 +28,23 @@ $(document).ready(function(){
     });
 });
 
-// Query the database and initialize all elements that use information from it
-function init() {
+// Query the database all projects for autocomplete and initialize the projects field
+function projects() {
 
 
-    $.post("/init", function(data){
+    $.post("/projects", function(data){
 
         if( data != null) {
 
+            console.log(data.tag);
+
             $( "#project" ).autocomplete({
-                source: data
+                source: data.projects
+            });
+
+            $('#tags').tagThis({
+                autocompleteSource : data.tag,
+                defaultText : ''
             });
 
             $("#form").css("display", "block");
@@ -55,6 +62,11 @@ function postEntry() {
     var tags = "'" + $("#tags").val() + "'";
     var effectiveness = "'" + $("#effectiveness").val() + "'";
     var notes = "'" + $("#notes").val() + "'";
+
+    // Get tags
+    var tags = "'" + $('#tags').data('tags') + "'";
+
+    alert(tags);
 
     $.post("/entry",{date: date,starttime: starttime,endtime: endtime,project: project,category: category,tags: tags,effectiveness: effectiveness,notes: notes}, function(data){
 
