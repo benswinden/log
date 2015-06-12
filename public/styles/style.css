@@ -26,7 +26,6 @@ h1 {
 }
 
 form {
-    display: none;
     margin: auto;
     margin-top: 8%;
     width: 30%;
@@ -34,9 +33,32 @@ form {
     xborder: 1px solid white;
 }
 
+#form {
+    display: none;
+}
+
+form.login {
+    height: 300px;
+    margin-top: 0;
+    position: fixed;
+    top: 50%;
+    left: 50%;
+    /* bring your own prefixes */
+    transform: translate(-50%, -50%);
+}
+
 ul {
     padding: 0;
     list-style: none;
+}
+
+ul.login {
+
+    position: fixed;
+    top: 50%;
+    left: 50%;
+    /* bring your own prefixes */
+    transform: translate(-50%, -50%);
 }
 
 li {

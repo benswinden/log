@@ -9,6 +9,10 @@ var app = express();
 // Handlebars-express instance
 var hbs = exphbs.create({ });
 
+// General Variables
+verified = false;
+
+
 app.engine('handlebars', exphbs({defaultLayout: 'main'}));
 app.set('view engine', 'handlebars');
 
@@ -16,12 +20,31 @@ app.use(express.static(__dirname + '/public'))
 app.use(bodyParser.urlencoded({ extended: false }));
 
 app.get('/', function (req, res, next) {
-    res.render('home', {
+    res.render('login', {
 
         helpers: {
 
         }
     });
+});
+
+app.get('/form', function (req, res, next) {
+
+    if (verified) {
+
+        res.render('home', {
+
+            helpers: {
+
+            }
+        });
+    }
+});
+
+app.post('/verify',function(req,res){
+    
+    verified = req.body.verified;
+    res.send("DONE");
 });
 
 app.post('/projects',function(req,res){
@@ -101,7 +124,7 @@ app.post('/projects',function(req,res){
                     }
 
                     if (!found) {
-                        
+
                         dbData.tag.push(tagList[tagListIndex]);
                     }
                 }

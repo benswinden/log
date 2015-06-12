@@ -1,6 +1,9 @@
 
 $(document).ready(function(){
 
+    // **  Login Password **
+    var password = 'iron';
+
     projects();
 
     // Get the current date
@@ -21,7 +24,36 @@ $(document).ready(function(){
 
     $('#date').val(currentDate);
 
-    // On submit
+    // On submit login
+    $("#loginform").submit( function(event ) {
+
+        if ($("#login").val() == password) {
+
+            $.ajax({
+                method: "POST",
+                url: "/verify",
+                data: { verified: true }
+            })
+            .done(function( msg ) {
+
+                $.ajax({
+                    url: '/form'
+                    , type: 'GET'
+                    , dataType: 'html'
+                })
+                .done(function(data) {
+                    $('body').html(data);
+                })
+            });
+        }
+        else {
+            $("#login").val("");
+        }
+
+        event.preventDefault();
+    });
+
+    // On submit entry
     $("#form").submit( function(event ) {
         postEntry();
         event.preventDefault();
