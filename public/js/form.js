@@ -74,8 +74,6 @@ function postEntry() {
 
     tags = "'" + tags + "'";
 
-    console.log("STRING: " + tags);
-
     $.post("/entry",{date: date,starttime: starttime,endtime: endtime,project: project,category: category,tags: tags,effectiveness: effectiveness,notes: notes}, function(data){
 
         // Callback

@@ -553,7 +553,7 @@
             newWidth = inputWidth + 30;
         }
 
-        input.css('width', newWidth);
+        //input.css('width', newWidth);
     };
 
     $.fn.resetInputSize = function(input){
