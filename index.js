@@ -32,7 +32,7 @@ app.get('/form', function (req, res, next) {
 
     if (verified) {
 
-        res.render('home', {
+        res.render('form', {
 
             helpers: {
 
@@ -42,7 +42,7 @@ app.get('/form', function (req, res, next) {
 });
 
 app.post('/verify',function(req,res){
-    
+
     verified = req.body.verified;
     res.send("DONE");
 });
