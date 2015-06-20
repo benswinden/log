@@ -182,6 +182,6 @@ var server = app.listen(6001, function () {
   var host = server.address().address;
   var port = server.address().port;
 
-  console.log('Timer listening at http://%s:%s', host, port);
+  console.log('Log listening at http://%s:%s', host, port);
 
 });

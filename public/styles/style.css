@@ -9,9 +9,9 @@
 }
 
 body {
-    background-color: #101016;
+    background-color: #f5f5f5;
     font-family: 'rakesly_light', 'inconsolata', monospace;
-    color: white;
+    color: #303030;
 }
 
 h1 {
@@ -62,7 +62,7 @@ ul.login {
 }
 
 li {
-    color: #d8d8d8;
+    color: #686868;
     font-size: 0.75em;
     text-align: center;
     margin: auto;
@@ -72,11 +72,11 @@ li {
 }
 
 li input {
-    color: white;
+    color: #101016;
     padding: 7px;
     margin: 10px 0;
-    background-color :#101016;
-    border: solid 2px #4e5051;
+    background-color :#f5f5f5;
+    border: solid 2px #AFAFAF;
     transition: border 0.3s;
 }
 
@@ -88,7 +88,7 @@ li input {
     font-size: 27px;
     width 100px;
     padding: 4px 0px;
-    background-color :#101016;
+    background-color :#f5f5f5;
     margin: 10px 0;
     border: none;
 }
@@ -113,7 +113,7 @@ li .tag-this {
 }
 
 .tag-this {
-    background-color :#101016;
+    background-color :#f5f5f5;
     padding:5px;
     width:320px;
     height:100px;
@@ -132,14 +132,14 @@ li .tag-this {
     float: left;
     padding: 5px;
     text-decoration:none;
-    color: white;
+    color: #101016;
     margin-right: 5px;
     margin-bottom:5px;
     font-family: tahoma, sans-serif;
     font-size:13px;
     max-width: 90%;
-    background-color :#101016;
-    border: solid 2px #323333;
+    background-color :#f5f5f5;
+    border: solid 2px #AFAFAF;
 }
 
 .tag-this .tag button {
@@ -165,7 +165,7 @@ li .tag-this {
     font-size: 13px;
     border:none;
     background: transparent;
-    color: white;
+    color: #101016;
     margin-right:5px;
     margin-bottom:5px;
 }
@@ -183,7 +183,7 @@ li .tag-this {
 
 .tag-this .tag-this--invalid {
     /*background: #DF3645; */
-    border: 1px dashed #DF3645;
+    border: 1px dashed #AFAFAF;
     outline: white;
     color: #DF3645;
     border-radius: 5px;
