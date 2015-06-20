@@ -71,7 +71,7 @@
 	display: block;
 	text-indent: -99999px;
 	overflow: hidden;
-	background-color :#101016-repeat: no-repeat;
+	background-color :#f5f5f5-repeat: no-repeat;
 }
 
 
@@ -109,7 +109,7 @@
 	cursor: pointer;
 	min-height: 0; /* support: IE7 */
 	/* support: IE10, see #8844 */
-	background-color :#101016;
+	background-color :#f5f5f5;
 }
 .ui-menu .ui-menu-divider {
 	margin: 5px 0;
@@ -164,7 +164,7 @@
 }
 .ui-widget-content {
 	border: 1px solid #323333;
-	background-color :#101016-color :#101016;
+	background-color :#f5f5f5-color :#f5f5f5;
 	color: #333333;
 }
 .ui-widget-content a {
@@ -271,7 +271,7 @@
 .ui-widget-header .ui-state-disabled {
 	opacity: .35;
 	filter:Alpha(Opacity=35); /* support: IE8 */
-	background-color :#101016-image: none;
+	background-color :#f5f5f5-image: none;
 }
 .ui-state-disabled .ui-icon {
 	filter:Alpha(Opacity=35); /* support: IE8 - See #6059 */
@@ -287,206 +287,206 @@
 }
 .ui-icon,
 .ui-widget-content .ui-icon {
-	background-color :#101016 ;
+	background-color :#f5f5f5 ;
 }
 .ui-widget-header .ui-icon {
-	background-color :#101016 ;
+	background-color :#f5f5f5 ;
 }
 .ui-state-default .ui-icon {
-	background-color :#101016 ;
+	background-color :#f5f5f5 ;
 }
 .ui-state-hover .ui-icon,
 .ui-state-focus .ui-icon {
-	background-color :#101016 ;
+	background-color :#f5f5f5 ;
 }
 .ui-state-active .ui-icon {
-	background-color :#101016 ;
+	background-color :#f5f5f5 ;
 }
 .ui-state-highlight .ui-icon {
-	background-color :#101016 ;
+	background-color :#f5f5f5 ;
 }
 .ui-state-error .ui-icon,
 .ui-state-error-text .ui-icon {
-	background-color :#101016 ;
+	background-color :#f5f5f5 ;
 }
 
 /* positioning */
-.ui-icon-blank { background-color :#101016-position: 16px 16px; }
-.ui-icon-carat-1-n { background-color :#101016-position: 0 0; }
-.ui-icon-carat-1-ne { background-color :#101016-position: -16px 0; }
-.ui-icon-carat-1-e { background-color :#101016-position: -32px 0; }
-.ui-icon-carat-1-se { background-color :#101016-position: -48px 0; }
-.ui-icon-carat-1-s { background-color :#101016-position: -64px 0; }
-.ui-icon-carat-1-sw { background-color :#101016-position: -80px 0; }
-.ui-icon-carat-1-w { background-color :#101016-position: -96px 0; }
-.ui-icon-carat-1-nw { background-color :#101016-position: -112px 0; }
-.ui-icon-carat-2-n-s { background-color :#101016-position: -128px 0; }
-.ui-icon-carat-2-e-w { background-color :#101016-position: -144px 0; }
-.ui-icon-triangle-1-n { background-color :#101016-position: 0 -16px; }
-.ui-icon-triangle-1-ne { background-color :#101016-position: -16px -16px; }
-.ui-icon-triangle-1-e { background-color :#101016-position: -32px -16px; }
-.ui-icon-triangle-1-se { background-color :#101016-position: -48px -16px; }
-.ui-icon-triangle-1-s { background-color :#101016-position: -64px -16px; }
-.ui-icon-triangle-1-sw { background-color :#101016-position: -80px -16px; }
-.ui-icon-triangle-1-w { background-color :#101016-position: -96px -16px; }
-.ui-icon-triangle-1-nw { background-color :#101016-position: -112px -16px; }
-.ui-icon-triangle-2-n-s { background-color :#101016-position: -128px -16px; }
-.ui-icon-triangle-2-e-w { background-color :#101016-position: -144px -16px; }
-.ui-icon-arrow-1-n { background-color :#101016-position: 0 -32px; }
-.ui-icon-arrow-1-ne { background-color :#101016-position: -16px -32px; }
-.ui-icon-arrow-1-e { background-color :#101016-position: -32px -32px; }
-.ui-icon-arrow-1-se { background-color :#101016-position: -48px -32px; }
-.ui-icon-arrow-1-s { background-color :#101016-position: -64px -32px; }
-.ui-icon-arrow-1-sw { background-color :#101016-position: -80px -32px; }
-.ui-icon-arrow-1-w { background-color :#101016-position: -96px -32px; }
-.ui-icon-arrow-1-nw { background-color :#101016-position: -112px -32px; }
-.ui-icon-arrow-2-n-s { background-color :#101016-position: -128px -32px; }
-.ui-icon-arrow-2-ne-sw { background-color :#101016-position: -144px -32px; }
-.ui-icon-arrow-2-e-w { background-color :#101016-position: -160px -32px; }
-.ui-icon-arrow-2-se-nw { background-color :#101016-position: -176px -32px; }
-.ui-icon-arrowstop-1-n { background-color :#101016-position: -192px -32px; }
-.ui-icon-arrowstop-1-e { background-color :#101016-position: -208px -32px; }
-.ui-icon-arrowstop-1-s { background-color :#101016-position: -224px -32px; }
-.ui-icon-arrowstop-1-w { background-color :#101016-position: -240px -32px; }
-.ui-icon-arrowthick-1-n { background-color :#101016-position: 0 -48px; }
-.ui-icon-arrowthick-1-ne { background-color :#101016-position: -16px -48px; }
-.ui-icon-arrowthick-1-e { background-color :#101016-position: -32px -48px; }
-.ui-icon-arrowthick-1-se { background-color :#101016-position: -48px -48px; }
-.ui-icon-arrowthick-1-s { background-color :#101016-position: -64px -48px; }
-.ui-icon-arrowthick-1-sw { background-color :#101016-position: -80px -48px; }
-.ui-icon-arrowthick-1-w { background-color :#101016-position: -96px -48px; }
-.ui-icon-arrowthick-1-nw { background-color :#101016-position: -112px -48px; }
-.ui-icon-arrowthick-2-n-s { background-color :#101016-position: -128px -48px; }
-.ui-icon-arrowthick-2-ne-sw { background-color :#101016-position: -144px -48px; }
-.ui-icon-arrowthick-2-e-w { background-color :#101016-position: -160px -48px; }
-.ui-icon-arrowthick-2-se-nw { background-color :#101016-position: -176px -48px; }
-.ui-icon-arrowthickstop-1-n { background-color :#101016-position: -192px -48px; }
-.ui-icon-arrowthickstop-1-e { background-color :#101016-position: -208px -48px; }
-.ui-icon-arrowthickstop-1-s { background-color :#101016-position: -224px -48px; }
-.ui-icon-arrowthickstop-1-w { background-color :#101016-position: -240px -48px; }
-.ui-icon-arrowreturnthick-1-w { background-color :#101016-position: 0 -64px; }
-.ui-icon-arrowreturnthick-1-n { background-color :#101016-position: -16px -64px; }
-.ui-icon-arrowreturnthick-1-e { background-color :#101016-position: -32px -64px; }
-.ui-icon-arrowreturnthick-1-s { background-color :#101016-position: -48px -64px; }
-.ui-icon-arrowreturn-1-w { background-color :#101016-position: -64px -64px; }
-.ui-icon-arrowreturn-1-n { background-color :#101016-position: -80px -64px; }
-.ui-icon-arrowreturn-1-e { background-color :#101016-position: -96px -64px; }
-.ui-icon-arrowreturn-1-s { background-color :#101016-position: -112px -64px; }
-.ui-icon-arrowrefresh-1-w { background-color :#101016-position: -128px -64px; }
-.ui-icon-arrowrefresh-1-n { background-color :#101016-position: -144px -64px; }
-.ui-icon-arrowrefresh-1-e { background-color :#101016-position: -160px -64px; }
-.ui-icon-arrowrefresh-1-s { background-color :#101016-position: -176px -64px; }
-.ui-icon-arrow-4 { background-color :#101016-position: 0 -80px; }
-.ui-icon-arrow-4-diag { background-color :#101016-position: -16px -80px; }
-.ui-icon-extlink { background-color :#101016-position: -32px -80px; }
-.ui-icon-newwin { background-color :#101016-position: -48px -80px; }
-.ui-icon-refresh { background-color :#101016-position: -64px -80px; }
-.ui-icon-shuffle { background-color :#101016-position: -80px -80px; }
-.ui-icon-transfer-e-w { background-color :#101016-position: -96px -80px; }
-.ui-icon-transferthick-e-w { background-color :#101016-position: -112px -80px; }
-.ui-icon-folder-collapsed { background-color :#101016-position: 0 -96px; }
-.ui-icon-folder-open { background-color :#101016-position: -16px -96px; }
-.ui-icon-document { background-color :#101016-position: -32px -96px; }
-.ui-icon-document-b { background-color :#101016-position: -48px -96px; }
-.ui-icon-note { background-color :#101016-position: -64px -96px; }
-.ui-icon-mail-closed { background-color :#101016-position: -80px -96px; }
-.ui-icon-mail-open { background-color :#101016-position: -96px -96px; }
-.ui-icon-suitcase { background-color :#101016-position: -112px -96px; }
-.ui-icon-comment { background-color :#101016-position: -128px -96px; }
-.ui-icon-person { background-color :#101016-position: -144px -96px; }
-.ui-icon-print { background-color :#101016-position: -160px -96px; }
-.ui-icon-trash { background-color :#101016-position: -176px -96px; }
-.ui-icon-locked { background-color :#101016-position: -192px -96px; }
-.ui-icon-unlocked { background-color :#101016-position: -208px -96px; }
-.ui-icon-bookmark { background-color :#101016-position: -224px -96px; }
-.ui-icon-tag { background-color :#101016-position: -240px -96px; }
-.ui-icon-home { background-color :#101016-position: 0 -112px; }
-.ui-icon-flag { background-color :#101016-position: -16px -112px; }
-.ui-icon-calendar { background-color :#101016-position: -32px -112px; }
-.ui-icon-cart { background-color :#101016-position: -48px -112px; }
-.ui-icon-pencil { background-color :#101016-position: -64px -112px; }
-.ui-icon-clock { background-color :#101016-position: -80px -112px; }
-.ui-icon-disk { background-color :#101016-position: -96px -112px; }
-.ui-icon-calculator { background-color :#101016-position: -112px -112px; }
-.ui-icon-zoomin { background-color :#101016-position: -128px -112px; }
-.ui-icon-zoomout { background-color :#101016-position: -144px -112px; }
-.ui-icon-search { background-color :#101016-position: -160px -112px; }
-.ui-icon-wrench { background-color :#101016-position: -176px -112px; }
-.ui-icon-gear { background-color :#101016-position: -192px -112px; }
-.ui-icon-heart { background-color :#101016-position: -208px -112px; }
-.ui-icon-star { background-color :#101016-position: -224px -112px; }
-.ui-icon-link { background-color :#101016-position: -240px -112px; }
-.ui-icon-cancel { background-color :#101016-position: 0 -128px; }
-.ui-icon-plus { background-color :#101016-position: -16px -128px; }
-.ui-icon-plusthick { background-color :#101016-position: -32px -128px; }
-.ui-icon-minus { background-color :#101016-position: -48px -128px; }
-.ui-icon-minusthick { background-color :#101016-position: -64px -128px; }
-.ui-icon-close { background-color :#101016-position: -80px -128px; }
-.ui-icon-closethick { background-color :#101016-position: -96px -128px; }
-.ui-icon-key { background-color :#101016-position: -112px -128px; }
-.ui-icon-lightbulb { background-color :#101016-position: -128px -128px; }
-.ui-icon-scissors { background-color :#101016-position: -144px -128px; }
-.ui-icon-clipboard { background-color :#101016-position: -160px -128px; }
-.ui-icon-copy { background-color :#101016-position: -176px -128px; }
-.ui-icon-contact { background-color :#101016-position: -192px -128px; }
-.ui-icon-image { background-color :#101016-position: -208px -128px; }
-.ui-icon-video { background-color :#101016-position: -224px -128px; }
-.ui-icon-script { background-color :#101016-position: -240px -128px; }
-.ui-icon-alert { background-color :#101016-position: 0 -144px; }
-.ui-icon-info { background-color :#101016-position: -16px -144px; }
-.ui-icon-notice { background-color :#101016-position: -32px -144px; }
-.ui-icon-help { background-color :#101016-position: -48px -144px; }
-.ui-icon-check { background-color :#101016-position: -64px -144px; }
-.ui-icon-bullet { background-color :#101016-position: -80px -144px; }
-.ui-icon-radio-on { background-color :#101016-position: -96px -144px; }
-.ui-icon-radio-off { background-color :#101016-position: -112px -144px; }
-.ui-icon-pin-w { background-color :#101016-position: -128px -144px; }
-.ui-icon-pin-s { background-color :#101016-position: -144px -144px; }
-.ui-icon-play { background-color :#101016-position: 0 -160px; }
-.ui-icon-pause { background-color :#101016-position: -16px -160px; }
-.ui-icon-seek-next { background-color :#101016-position: -32px -160px; }
-.ui-icon-seek-prev { background-color :#101016-position: -48px -160px; }
-.ui-icon-seek-end { background-color :#101016-position: -64px -160px; }
-.ui-icon-seek-start { background-color :#101016-position: -80px -160px; }
+.ui-icon-blank { background-color :#f5f5f5-position: 16px 16px; }
+.ui-icon-carat-1-n { background-color :#f5f5f5-position: 0 0; }
+.ui-icon-carat-1-ne { background-color :#f5f5f5-position: -16px 0; }
+.ui-icon-carat-1-e { background-color :#f5f5f5-position: -32px 0; }
+.ui-icon-carat-1-se { background-color :#f5f5f5-position: -48px 0; }
+.ui-icon-carat-1-s { background-color :#f5f5f5-position: -64px 0; }
+.ui-icon-carat-1-sw { background-color :#f5f5f5-position: -80px 0; }
+.ui-icon-carat-1-w { background-color :#f5f5f5-position: -96px 0; }
+.ui-icon-carat-1-nw { background-color :#f5f5f5-position: -112px 0; }
+.ui-icon-carat-2-n-s { background-color :#f5f5f5-position: -128px 0; }
+.ui-icon-carat-2-e-w { background-color :#f5f5f5-position: -144px 0; }
+.ui-icon-triangle-1-n { background-color :#f5f5f5-position: 0 -16px; }
+.ui-icon-triangle-1-ne { background-color :#f5f5f5-position: -16px -16px; }
+.ui-icon-triangle-1-e { background-color :#f5f5f5-position: -32px -16px; }
+.ui-icon-triangle-1-se { background-color :#f5f5f5-position: -48px -16px; }
+.ui-icon-triangle-1-s { background-color :#f5f5f5-position: -64px -16px; }
+.ui-icon-triangle-1-sw { background-color :#f5f5f5-position: -80px -16px; }
+.ui-icon-triangle-1-w { background-color :#f5f5f5-position: -96px -16px; }
+.ui-icon-triangle-1-nw { background-color :#f5f5f5-position: -112px -16px; }
+.ui-icon-triangle-2-n-s { background-color :#f5f5f5-position: -128px -16px; }
+.ui-icon-triangle-2-e-w { background-color :#f5f5f5-position: -144px -16px; }
+.ui-icon-arrow-1-n { background-color :#f5f5f5-position: 0 -32px; }
+.ui-icon-arrow-1-ne { background-color :#f5f5f5-position: -16px -32px; }
+.ui-icon-arrow-1-e { background-color :#f5f5f5-position: -32px -32px; }
+.ui-icon-arrow-1-se { background-color :#f5f5f5-position: -48px -32px; }
+.ui-icon-arrow-1-s { background-color :#f5f5f5-position: -64px -32px; }
+.ui-icon-arrow-1-sw { background-color :#f5f5f5-position: -80px -32px; }
+.ui-icon-arrow-1-w { background-color :#f5f5f5-position: -96px -32px; }
+.ui-icon-arrow-1-nw { background-color :#f5f5f5-position: -112px -32px; }
+.ui-icon-arrow-2-n-s { background-color :#f5f5f5-position: -128px -32px; }
+.ui-icon-arrow-2-ne-sw { background-color :#f5f5f5-position: -144px -32px; }
+.ui-icon-arrow-2-e-w { background-color :#f5f5f5-position: -160px -32px; }
+.ui-icon-arrow-2-se-nw { background-color :#f5f5f5-position: -176px -32px; }
+.ui-icon-arrowstop-1-n { background-color :#f5f5f5-position: -192px -32px; }
+.ui-icon-arrowstop-1-e { background-color :#f5f5f5-position: -208px -32px; }
+.ui-icon-arrowstop-1-s { background-color :#f5f5f5-position: -224px -32px; }
+.ui-icon-arrowstop-1-w { background-color :#f5f5f5-position: -240px -32px; }
+.ui-icon-arrowthick-1-n { background-color :#f5f5f5-position: 0 -48px; }
+.ui-icon-arrowthick-1-ne { background-color :#f5f5f5-position: -16px -48px; }
+.ui-icon-arrowthick-1-e { background-color :#f5f5f5-position: -32px -48px; }
+.ui-icon-arrowthick-1-se { background-color :#f5f5f5-position: -48px -48px; }
+.ui-icon-arrowthick-1-s { background-color :#f5f5f5-position: -64px -48px; }
+.ui-icon-arrowthick-1-sw { background-color :#f5f5f5-position: -80px -48px; }
+.ui-icon-arrowthick-1-w { background-color :#f5f5f5-position: -96px -48px; }
+.ui-icon-arrowthick-1-nw { background-color :#f5f5f5-position: -112px -48px; }
+.ui-icon-arrowthick-2-n-s { background-color :#f5f5f5-position: -128px -48px; }
+.ui-icon-arrowthick-2-ne-sw { background-color :#f5f5f5-position: -144px -48px; }
+.ui-icon-arrowthick-2-e-w { background-color :#f5f5f5-position: -160px -48px; }
+.ui-icon-arrowthick-2-se-nw { background-color :#f5f5f5-position: -176px -48px; }
+.ui-icon-arrowthickstop-1-n { background-color :#f5f5f5-position: -192px -48px; }
+.ui-icon-arrowthickstop-1-e { background-color :#f5f5f5-position: -208px -48px; }
+.ui-icon-arrowthickstop-1-s { background-color :#f5f5f5-position: -224px -48px; }
+.ui-icon-arrowthickstop-1-w { background-color :#f5f5f5-position: -240px -48px; }
+.ui-icon-arrowreturnthick-1-w { background-color :#f5f5f5-position: 0 -64px; }
+.ui-icon-arrowreturnthick-1-n { background-color :#f5f5f5-position: -16px -64px; }
+.ui-icon-arrowreturnthick-1-e { background-color :#f5f5f5-position: -32px -64px; }
+.ui-icon-arrowreturnthick-1-s { background-color :#f5f5f5-position: -48px -64px; }
+.ui-icon-arrowreturn-1-w { background-color :#f5f5f5-position: -64px -64px; }
+.ui-icon-arrowreturn-1-n { background-color :#f5f5f5-position: -80px -64px; }
+.ui-icon-arrowreturn-1-e { background-color :#f5f5f5-position: -96px -64px; }
+.ui-icon-arrowreturn-1-s { background-color :#f5f5f5-position: -112px -64px; }
+.ui-icon-arrowrefresh-1-w { background-color :#f5f5f5-position: -128px -64px; }
+.ui-icon-arrowrefresh-1-n { background-color :#f5f5f5-position: -144px -64px; }
+.ui-icon-arrowrefresh-1-e { background-color :#f5f5f5-position: -160px -64px; }
+.ui-icon-arrowrefresh-1-s { background-color :#f5f5f5-position: -176px -64px; }
+.ui-icon-arrow-4 { background-color :#f5f5f5-position: 0 -80px; }
+.ui-icon-arrow-4-diag { background-color :#f5f5f5-position: -16px -80px; }
+.ui-icon-extlink { background-color :#f5f5f5-position: -32px -80px; }
+.ui-icon-newwin { background-color :#f5f5f5-position: -48px -80px; }
+.ui-icon-refresh { background-color :#f5f5f5-position: -64px -80px; }
+.ui-icon-shuffle { background-color :#f5f5f5-position: -80px -80px; }
+.ui-icon-transfer-e-w { background-color :#f5f5f5-position: -96px -80px; }
+.ui-icon-transferthick-e-w { background-color :#f5f5f5-position: -112px -80px; }
+.ui-icon-folder-collapsed { background-color :#f5f5f5-position: 0 -96px; }
+.ui-icon-folder-open { background-color :#f5f5f5-position: -16px -96px; }
+.ui-icon-document { background-color :#f5f5f5-position: -32px -96px; }
+.ui-icon-document-b { background-color :#f5f5f5-position: -48px -96px; }
+.ui-icon-note { background-color :#f5f5f5-position: -64px -96px; }
+.ui-icon-mail-closed { background-color :#f5f5f5-position: -80px -96px; }
+.ui-icon-mail-open { background-color :#f5f5f5-position: -96px -96px; }
+.ui-icon-suitcase { background-color :#f5f5f5-position: -112px -96px; }
+.ui-icon-comment { background-color :#f5f5f5-position: -128px -96px; }
+.ui-icon-person { background-color :#f5f5f5-position: -144px -96px; }
+.ui-icon-print { background-color :#f5f5f5-position: -160px -96px; }
+.ui-icon-trash { background-color :#f5f5f5-position: -176px -96px; }
+.ui-icon-locked { background-color :#f5f5f5-position: -192px -96px; }
+.ui-icon-unlocked { background-color :#f5f5f5-position: -208px -96px; }
+.ui-icon-bookmark { background-color :#f5f5f5-position: -224px -96px; }
+.ui-icon-tag { background-color :#f5f5f5-position: -240px -96px; }
+.ui-icon-home { background-color :#f5f5f5-position: 0 -112px; }
+.ui-icon-flag { background-color :#f5f5f5-position: -16px -112px; }
+.ui-icon-calendar { background-color :#f5f5f5-position: -32px -112px; }
+.ui-icon-cart { background-color :#f5f5f5-position: -48px -112px; }
+.ui-icon-pencil { background-color :#f5f5f5-position: -64px -112px; }
+.ui-icon-clock { background-color :#f5f5f5-position: -80px -112px; }
+.ui-icon-disk { background-color :#f5f5f5-position: -96px -112px; }
+.ui-icon-calculator { background-color :#f5f5f5-position: -112px -112px; }
+.ui-icon-zoomin { background-color :#f5f5f5-position: -128px -112px; }
+.ui-icon-zoomout { background-color :#f5f5f5-position: -144px -112px; }
+.ui-icon-search { background-color :#f5f5f5-position: -160px -112px; }
+.ui-icon-wrench { background-color :#f5f5f5-position: -176px -112px; }
+.ui-icon-gear { background-color :#f5f5f5-position: -192px -112px; }
+.ui-icon-heart { background-color :#f5f5f5-position: -208px -112px; }
+.ui-icon-star { background-color :#f5f5f5-position: -224px -112px; }
+.ui-icon-link { background-color :#f5f5f5-position: -240px -112px; }
+.ui-icon-cancel { background-color :#f5f5f5-position: 0 -128px; }
+.ui-icon-plus { background-color :#f5f5f5-position: -16px -128px; }
+.ui-icon-plusthick { background-color :#f5f5f5-position: -32px -128px; }
+.ui-icon-minus { background-color :#f5f5f5-position: -48px -128px; }
+.ui-icon-minusthick { background-color :#f5f5f5-position: -64px -128px; }
+.ui-icon-close { background-color :#f5f5f5-position: -80px -128px; }
+.ui-icon-closethick { background-color :#f5f5f5-position: -96px -128px; }
+.ui-icon-key { background-color :#f5f5f5-position: -112px -128px; }
+.ui-icon-lightbulb { background-color :#f5f5f5-position: -128px -128px; }
+.ui-icon-scissors { background-color :#f5f5f5-position: -144px -128px; }
+.ui-icon-clipboard { background-color :#f5f5f5-position: -160px -128px; }
+.ui-icon-copy { background-color :#f5f5f5-position: -176px -128px; }
+.ui-icon-contact { background-color :#f5f5f5-position: -192px -128px; }
+.ui-icon-image { background-color :#f5f5f5-position: -208px -128px; }
+.ui-icon-video { background-color :#f5f5f5-position: -224px -128px; }
+.ui-icon-script { background-color :#f5f5f5-position: -240px -128px; }
+.ui-icon-alert { background-color :#f5f5f5-position: 0 -144px; }
+.ui-icon-info { background-color :#f5f5f5-position: -16px -144px; }
+.ui-icon-notice { background-color :#f5f5f5-position: -32px -144px; }
+.ui-icon-help { background-color :#f5f5f5-position: -48px -144px; }
+.ui-icon-check { background-color :#f5f5f5-position: -64px -144px; }
+.ui-icon-bullet { background-color :#f5f5f5-position: -80px -144px; }
+.ui-icon-radio-on { background-color :#f5f5f5-position: -96px -144px; }
+.ui-icon-radio-off { background-color :#f5f5f5-position: -112px -144px; }
+.ui-icon-pin-w { background-color :#f5f5f5-position: -128px -144px; }
+.ui-icon-pin-s { background-color :#f5f5f5-position: -144px -144px; }
+.ui-icon-play { background-color :#f5f5f5-position: 0 -160px; }
+.ui-icon-pause { background-color :#f5f5f5-position: -16px -160px; }
+.ui-icon-seek-next { background-color :#f5f5f5-position: -32px -160px; }
+.ui-icon-seek-prev { background-color :#f5f5f5-position: -48px -160px; }
+.ui-icon-seek-end { background-color :#f5f5f5-position: -64px -160px; }
+.ui-icon-seek-start { background-color :#f5f5f5-position: -80px -160px; }
 /* ui-icon-seek-first is deprecated, use ui-icon-seek-start instead */
-.ui-icon-seek-first { background-color :#101016-position: -80px -160px; }
-.ui-icon-stop { background-color :#101016-position: -96px -160px; }
-.ui-icon-eject { background-color :#101016-position: -112px -160px; }
-.ui-icon-volume-off { background-color :#101016-position: -128px -160px; }
-.ui-icon-volume-on { background-color :#101016-position: -144px -160px; }
-.ui-icon-power { background-color :#101016-position: 0 -176px; }
-.ui-icon-signal-diag { background-color :#101016-position: -16px -176px; }
-.ui-icon-signal { background-color :#101016-position: -32px -176px; }
-.ui-icon-battery-0 { background-color :#101016-position: -48px -176px; }
-.ui-icon-battery-1 { background-color :#101016-position: -64px -176px; }
-.ui-icon-battery-2 { background-color :#101016-position: -80px -176px; }
-.ui-icon-battery-3 { background-color :#101016-position: -96px -176px; }
-.ui-icon-circle-plus { background-color :#101016-position: 0 -192px; }
-.ui-icon-circle-minus { background-color :#101016-position: -16px -192px; }
-.ui-icon-circle-close { background-color :#101016-position: -32px -192px; }
-.ui-icon-circle-triangle-e { background-color :#101016-position: -48px -192px; }
-.ui-icon-circle-triangle-s { background-color :#101016-position: -64px -192px; }
-.ui-icon-circle-triangle-w { background-color :#101016-position: -80px -192px; }
-.ui-icon-circle-triangle-n { background-color :#101016-position: -96px -192px; }
-.ui-icon-circle-arrow-e { background-color :#101016-position: -112px -192px; }
-.ui-icon-circle-arrow-s { background-color :#101016-position: -128px -192px; }
-.ui-icon-circle-arrow-w { background-color :#101016-position: -144px -192px; }
-.ui-icon-circle-arrow-n { background-color :#101016-position: -160px -192px; }
-.ui-icon-circle-zoomin { background-color :#101016-position: -176px -192px; }
-.ui-icon-circle-zoomout { background-color :#101016-position: -192px -192px; }
-.ui-icon-circle-check { background-color :#101016-position: -208px -192px; }
-.ui-icon-circlesmall-plus { background-color :#101016-position: 0 -208px; }
-.ui-icon-circlesmall-minus { background-color :#101016-position: -16px -208px; }
-.ui-icon-circlesmall-close { background-color :#101016-position: -32px -208px; }
-.ui-icon-squaresmall-plus { background-color :#101016-position: -48px -208px; }
-.ui-icon-squaresmall-minus { background-color :#101016-position: -64px -208px; }
-.ui-icon-squaresmall-close { background-color :#101016-position: -80px -208px; }
-.ui-icon-grip-dotted-vertical { background-color :#101016-position: 0 -224px; }
-.ui-icon-grip-dotted-horizontal { background-color :#101016-position: -16px -224px; }
-.ui-icon-grip-solid-vertical { background-color :#101016-position: -32px -224px; }
-.ui-icon-grip-solid-horizontal { background-color :#101016-position: -48px -224px; }
-.ui-icon-gripsmall-diagonal-se { background-color :#101016-position: -64px -224px; }
-.ui-icon-grip-diagonal-se { background-color :#101016-position: -80px -224px; }
+.ui-icon-seek-first { background-color :#f5f5f5-position: -80px -160px; }
+.ui-icon-stop { background-color :#f5f5f5-position: -96px -160px; }
+.ui-icon-eject { background-color :#f5f5f5-position: -112px -160px; }
+.ui-icon-volume-off { background-color :#f5f5f5-position: -128px -160px; }
+.ui-icon-volume-on { background-color :#f5f5f5-position: -144px -160px; }
+.ui-icon-power { background-color :#f5f5f5-position: 0 -176px; }
+.ui-icon-signal-diag { background-color :#f5f5f5-position: -16px -176px; }
+.ui-icon-signal { background-color :#f5f5f5-position: -32px -176px; }
+.ui-icon-battery-0 { background-color :#f5f5f5-position: -48px -176px; }
+.ui-icon-battery-1 { background-color :#f5f5f5-position: -64px -176px; }
+.ui-icon-battery-2 { background-color :#f5f5f5-position: -80px -176px; }
+.ui-icon-battery-3 { background-color :#f5f5f5-position: -96px -176px; }
+.ui-icon-circle-plus { background-color :#f5f5f5-position: 0 -192px; }
+.ui-icon-circle-minus { background-color :#f5f5f5-position: -16px -192px; }
+.ui-icon-circle-close { background-color :#f5f5f5-position: -32px -192px; }
+.ui-icon-circle-triangle-e { background-color :#f5f5f5-position: -48px -192px; }
+.ui-icon-circle-triangle-s { background-color :#f5f5f5-position: -64px -192px; }
+.ui-icon-circle-triangle-w { background-color :#f5f5f5-position: -80px -192px; }
+.ui-icon-circle-triangle-n { background-color :#f5f5f5-position: -96px -192px; }
+.ui-icon-circle-arrow-e { background-color :#f5f5f5-position: -112px -192px; }
+.ui-icon-circle-arrow-s { background-color :#f5f5f5-position: -128px -192px; }
+.ui-icon-circle-arrow-w { background-color :#f5f5f5-position: -144px -192px; }
+.ui-icon-circle-arrow-n { background-color :#f5f5f5-position: -160px -192px; }
+.ui-icon-circle-zoomin { background-color :#f5f5f5-position: -176px -192px; }
+.ui-icon-circle-zoomout { background-color :#f5f5f5-position: -192px -192px; }
+.ui-icon-circle-check { background-color :#f5f5f5-position: -208px -192px; }
+.ui-icon-circlesmall-plus { background-color :#f5f5f5-position: 0 -208px; }
+.ui-icon-circlesmall-minus { background-color :#f5f5f5-position: -16px -208px; }
+.ui-icon-circlesmall-close { background-color :#f5f5f5-position: -32px -208px; }
+.ui-icon-squaresmall-plus { background-color :#f5f5f5-position: -48px -208px; }
+.ui-icon-squaresmall-minus { background-color :#f5f5f5-position: -64px -208px; }
+.ui-icon-squaresmall-close { background-color :#f5f5f5-position: -80px -208px; }
+.ui-icon-grip-dotted-vertical { background-color :#f5f5f5-position: 0 -224px; }
+.ui-icon-grip-dotted-horizontal { background-color :#f5f5f5-position: -16px -224px; }
+.ui-icon-grip-solid-vertical { background-color :#f5f5f5-position: -32px -224px; }
+.ui-icon-grip-solid-horizontal { background-color :#f5f5f5-position: -48px -224px; }
+.ui-icon-gripsmall-diagonal-se { background-color :#f5f5f5-position: -64px -224px; }
+.ui-icon-grip-diagonal-se { background-color :#f5f5f5-position: -80px -224px; }
 
 
 /* Misc visuals
@@ -520,14 +520,14 @@
 
 /* Overlays */
 .ui-widget-overlay {
-	background-color :#101016: #666666 url("images/ui-bg_diagonals-thick_20_666666_40x40.png") 50% 50% repeat;
+	background-color :#f5f5f5: #666666 url("images/ui-bg_diagonals-thick_20_666666_40x40.png") 50% 50% repeat;
 	opacity: .5;
 	filter: Alpha(Opacity=50); /* support: IE8 */
 }
 .ui-widget-shadow {
 	margin: -5px 0 0 -5px;
 	padding: 5px;
-	background-color :#101016: #000000 url("images/ui-bg_flat_10_000000_40x100.png") 50% 50% repeat-x;
+	background-color :#f5f5f5: #000000 url("images/ui-bg_flat_10_000000_40x100.png") 50% 50% repeat-x;
 	opacity: .2;
 	filter: Alpha(Opacity=20); /* support: IE8 */
 	border-radius: 5px;
