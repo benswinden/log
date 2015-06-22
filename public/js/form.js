@@ -88,10 +88,8 @@ function postEntry() {
     var starttime = "'" + $("#starttime").val() + "'";
     var endtime = "'" + $("#endtime").val() + "'";
     var project = "'" + $("#project").val() + "'";
-    var category = "'" + $("#category").val() + "'";
-    var tags = "";
-    var effectiveness = "'" + $("#effectiveness").val() + "'";
     var notes = "'" + $("#notes").val() + "'";
+    var tags = "";
 
     // Get tags
     var tagsArray = $('#tags').data('tags');
@@ -106,7 +104,7 @@ function postEntry() {
 
     tags = "'" + tags + "'";
 
-    $.post("/entry",{date: date,starttime: starttime,endtime: endtime,project: project,category: category,tags: tags,effectiveness: effectiveness,notes: notes}, function(data){
+    $.post("/entry",{date: date,starttime: starttime,endtime: endtime,project: project,notes: notes,tags: tags}, function(data){
 
         // Callback
         if( data === 'complete') {
@@ -115,10 +113,8 @@ function postEntry() {
             $("#starttime").val("");
             $("#endtime").val("");
             $("#project").val("");
-            $("#category").val("");
-            $("#tags").val("");
-            $("#effectiveness").val("");
             $("#notes").val("");
+            $("#tags").val("");
 
             // Clear tags
             $('#tags').clearAllTags();
