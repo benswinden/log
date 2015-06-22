@@ -93,13 +93,16 @@ function postEntry() {
 
     // Get tags
     var tagsArray = $('#tags').data('tags');
+    console.log(tagsArray);
 
-    for (var i = 0; i < tagsArray.length; i++) {
+    if (tagsArray) { 
+        for (var i = 0; i < tagsArray.length; i++) {
 
-        if (i == 0)
-            tags += tagsArray[i].text;
-        else
-            tags += "," + tagsArray[i].text;
+            if (i == 0)
+                tags += tagsArray[i].text;
+            else
+                tags += "," + tagsArray[i].text;
+        }
     }
 
     tags = "'" + tags + "'";
