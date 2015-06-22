@@ -87,15 +87,14 @@ function postEntry() {
     var date = "'" +  $("#date").val() + "'";
     var starttime = "'" + $("#starttime").val() + "'";
     var endtime = "'" + $("#endtime").val() + "'";
-    var project = "'" + $("#project").val() + "'";
-    var notes = "'" + $("#notes").val() + "'";
+    var project = "'" + $("#project").val().replace("'", "''") + "'";
+    var notes = "'" + $("#notes").val().replace("'", "''") + "'";
     var tags = "";
 
     // Get tags
-    var tagsArray = $('#tags').data('tags');
-    console.log(tagsArray);
+    var tagsArray = $('#tags').data('tags');    
 
-    if (tagsArray) { 
+    if (tagsArray) {
         for (var i = 0; i < tagsArray.length; i++) {
 
             if (i == 0)
