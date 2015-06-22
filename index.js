@@ -26,6 +26,7 @@ app.get('/', function (req, res, next) {
 
         }
     });
+
 });
 
 app.get('/form', function (req, res, next) {
@@ -40,6 +41,57 @@ app.get('/form', function (req, res, next) {
         });
     }
 });
+
+app.get('/loop',function(req,res){
+
+    var fs = require("fs");
+    var file = "data/data.db";
+    var exists = fs.existsSync(file);
+
+    if(!exists) {
+        console.log("Error : DB file is missing");
+    }
+
+    var db = new sqlite3.Database(file);
+
+    rows = [];
+
+    db.serialize(function() {
+
+        var entryNum = 99;
+
+        db.get("SELECT Count(*) as num FROM entries", function(err, row) {
+
+            entryNum = row.num;
+        });
+
+        var index = 0;
+        db.each("SELECT * FROM entries", function(err, row) {
+
+            index++;
+            columns = [];
+
+            columns.push(row.entryid);
+            columns.push(row.date);
+            columns.push(row.starttime);
+            columns.push(row.endtime);
+            columns.push(row.project);
+            columns.push(row.notes);
+            columns.push(row.tags);
+
+            rows.push(columns);
+
+            // Wait until all entries have been read before proceding
+            if (index >= entryNum) {
+
+                db.close();
+
+                res.render('loop', { rows : rows } );
+            }
+        });
+    });
+});
+
 
 app.post('/verify',function(req,res){
 

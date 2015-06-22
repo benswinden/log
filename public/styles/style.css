@@ -1,16 +1,7 @@
-@font-face {
-    font-family: rakesly_light;
-    src: url(font/rakesly_lt.otf);
-}
-
-@font-face {
-    font-family: rakesly_regular;
-    src: url(font/rakesly_rg.otf);
-}
 
 body {
     background-color: #f5f5f5;
-    font-family: 'rakesly_light', 'inconsolata', monospace;
+    font-family: Inconsolata, monospace, sans-serif;
     color: #303030;
 }
 
@@ -82,7 +73,7 @@ li input {
 
 
 #date {
-    font-family: 'rakesly_light', 'inconsolata', monospace;
+    font-family: Inconsolata, monospace, sans-serif;
     letter-spacing: 6px;
     text-align: center;
     font-size: 27px;
@@ -98,7 +89,7 @@ li input {
 }
 
 input[type=submit] {
-    font-family: 'rakesly_light', 'inconsolata', monospace;
+    font-family: Inconsolata, monospace, sans-serif;
     letter-spacing: 3px;
     padding:10px 20px;
     color: black;
@@ -111,6 +102,21 @@ input[type=submit] {
 li .tag-this {
         margin: 50px 0;
 }
+
+/*      Display     */
+
+table {
+    border-collapse: collapse;
+}
+
+table, th, td {
+    border: 1px solid black;
+    padding: 4px;
+
+}
+
+
+/*      Tags     */
 
 .tag-this {
     background-color :#f5f5f5;
@@ -135,7 +141,7 @@ li .tag-this {
     color: #101016;
     margin-right: 5px;
     margin-bottom:5px;
-    font-family: tahoma, sans-serif;
+    font-family: Inconsolata, monospace, sans-serif;
     font-size:13px;
     max-width: 90%;
     background-color :#f5f5f5;
@@ -161,7 +167,7 @@ li .tag-this {
     padding: 6px;
     width:80px;
     margin:0px;
-    font-family: tahoma, sans-serif;
+    font-family: Inconsolata, monospace, sans-serif;
     font-size: 13px;
     border:none;
     background: transparent;
