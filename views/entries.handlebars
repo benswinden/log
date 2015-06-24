@@ -1,4 +1,4 @@
-{{#if rows}}
+<input id="numEntries"></input>
 
 <table class="table">
     <thead>
@@ -12,14 +12,7 @@
             <td>Tags</td>
         </tr>
     </thead>
-    <tbody>
-        {{#each rows}}
-        <tr>
-            {{#each this}}
-                <td>{{this}}</td>
-            {{/each}}
-        </tr>
-        {{/each}}
+    <tbody id="table-body">
+
     </tbody>
 </table>
-{{/if}}
