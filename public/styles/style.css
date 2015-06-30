@@ -16,9 +16,10 @@ h1 {
     font-size: 1.5em;
 }
 
+
 form {
     margin: auto;
-    margin-top: 8%;
+    margin-top: 5%;
     width: 30%;
     height: 600px;
     xborder: 1px solid white;
@@ -71,6 +72,18 @@ li input {
     transition: border 0.3s;
 }
 
+nav {
+    width: 250px;
+    margin: auto;
+    overflow: hidden;
+}
+
+nav li {
+    padding: 1rem;
+    margin: 0;
+    float: left;
+    width: auto;
+}
 
 #date {
     font-family: Inconsolata, monospace, sans-serif;
@@ -103,7 +116,7 @@ li .tag-this {
         margin: 50px 0;
 }
 
-/*      Display     */
+/*      Entries     */
 
 table {
     border-collapse: collapse;
@@ -115,6 +128,20 @@ table, th, td {
 
 }
 
+#numEntries {
+    width: 25px;
+}
+
+#numEntriesSubmit {
+    font-family: Inconsolata, monospace, sans-serif;
+    letter-spacing: 3px;
+    padding:5px 10px;
+    color: black;
+    background-color :white;
+    cursor:pointer;
+    -webkit-border-radius: 5px;
+    border-radius: 5px; }
+}
 
 /*      Tags     */
 

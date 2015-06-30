@@ -1,3 +1,5 @@
+var basicAuth = require('basic-auth');
+
 var express = require('express');
 var exphbs  = require('express-handlebars');
 var bodyParser = require("body-parser");
@@ -19,34 +21,37 @@ app.set('view engine', 'handlebars');
 app.use(express.static(__dirname + '/public'))
 app.use(bodyParser.urlencoded({ extended: false }));
 
+// Authentication
+var auth = function (req, res, next) {
+  function unauthorized(res) {
+    res.set('WWW-Authenticate', 'Basic realm=Authorization Required');
+    return res.sendStatus(401);
+  };
+
+  var user = basicAuth(req);
+
+  if (!user || !user.name || !user.pass) {
+    return unauthorized(res);
+  };
+
+  if (user.name === 'ben' && user.pass === 'iron') {
+    return next();
+  } else {
+    return unauthorized(res);
+  };
+};
 
 
 // Render the login screen by default
-app.get('/', function (req, res, next) {
+app.get('/', auth, function (req, res, next) {
 
-    res.render('login');
-});
-
-// The form through which entries are submitted
-app.get('/form', function (req, res, next) {
-
-    if (verified) {
-
-        res.render('form');
-    }
+    res.render('form');
 });
 
 // Display entries from database
-app.get('/entries', function (req, res, next) {
+app.get('/entries', auth, function (req, res, next) {
 
     res.render('entries');
-});
-
-
-app.post('/verify',function(req,res){
-
-    verified = req.body.verified;
-    res.send("DONE");
 });
 
 app.post('/retrieve',function(req,res){
@@ -85,19 +90,22 @@ app.post('/retrieve',function(req,res){
 
         db.each(query, function(err, row) {
 
-            out += "<tr>";
-
             index++;
 
-            out += "<td>" + row.entryid + "</td>";
-            out += "<td>" + row.date + "</td>";
-            out += "<td>" + row.starttime + "</td>";
-            out += "<td>" + row.endtime + "</td>";
-            out += "<td>" + row.project + "</td>";
-            out += "<td>" + row.notes + "</td>";
-            out += "<td>" + row.tags + "</td>";
+            if (row.entryid != null) {
 
-            out += "</tr>";
+                out += "<tr>";
+
+                out += "<td>" + row.entryid + "</td>";
+                out += "<td>" + row.date + "</td>";
+                out += "<td>" + row.starttime + "</td>";
+                out += "<td>" + row.endtime + "</td>";
+                out += "<td>" + row.project + "</td>";
+                out += "<td>" + row.notes + "</td>";
+                out += "<td>" + row.tags + "</td>";
+
+                out += "</tr>";
+            }
 
             // Wait until all entries have been read before proceding
             if (index >= amount) {

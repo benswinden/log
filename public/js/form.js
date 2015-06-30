@@ -1,9 +1,6 @@
 
 $(document).ready(function(){
 
-    // **  Login Password **
-    var password = 'iron';
-
     projects();
 
     // Get the current date
@@ -24,34 +21,6 @@ $(document).ready(function(){
 
     $('#date').val(currentDate);
 
-    // On submit login
-    $("#loginform").submit( function(event ) {
-
-        if ($("#login").val() == password) {
-
-            $.ajax({
-                method: "POST",
-                url: "/verify",
-                data: { verified: true }
-            })
-            .done(function( msg ) {
-
-                $.ajax({
-                    url: '/form'
-                    , type: 'GET'
-                    , dataType: 'html'
-                })
-                .done(function(data) {
-                    $('body').html(data);
-                })
-            });
-        }
-        else {
-            $("#login").val("");
-        }
-
-        event.preventDefault();
-    });
 
     // On submit entry
     $("#form").submit( function(event ) {
@@ -92,7 +61,7 @@ function postEntry() {
     var tags = "";
 
     // Get tags
-    var tagsArray = $('#tags').data('tags');    
+    var tagsArray = $('#tags').data('tags');
 
     if (tagsArray) {
         for (var i = 0; i < tagsArray.length; i++) {
@@ -111,15 +80,7 @@ function postEntry() {
         // Callback
         if( data === 'complete') {
 
-            // Clear the form
-            $("#starttime").val("");
-            $("#endtime").val("");
-            $("#project").val("");
-            $("#notes").val("");
-            $("#tags").val("");
-
-            // Clear tags
-            $('#tags').clearAllTags();
+            window.location.href = '/entries';
         }
     });
 
