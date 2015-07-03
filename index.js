@@ -94,15 +94,15 @@ app.post('/retrieve',function(req,res){
 
             if (row.entryid != null) {
 
-                out += "<tr>";
+                out += "<tr class=\"table-row\">";
 
-                out += "<td>" + row.entryid + "</td>";
-                out += "<td>" + row.date + "</td>";
-                out += "<td>" + row.starttime + "</td>";
-                out += "<td>" + row.endtime + "</td>";
-                out += "<td>" + row.project + "</td>";
-                out += "<td>" + row.notes + "</td>";
-                out += "<td>" + row.tags + "</td>";
+                out += "<td class=\"table-id\">" + row.entryid + "</td>";
+                out += "<td class=\"table-date\">" + row.date + "</td>";
+                out += "<td class=\"table-start\">" + row.starttime + "</td>";
+                out += "<td class=\"table-end\">" + row.endtime + "</td>";
+                out += "<td class=\"table-project\">" + row.project + "</td>";
+                out += "<td class=\"table-notes\">" + row.notes + "</td>";
+                out += "<td class=\"table-tags\">" + row.tags + "</td>";
 
                 out += "</tr>";
             }
@@ -213,7 +213,6 @@ app.post('/projects',function(req,res){
     });
 });
 
-
 app.post('/entry',function(req,res){
 
     var date = req.body.date;
@@ -246,6 +245,42 @@ app.post('/entry',function(req,res){
 
     res.end("complete");
 });
+
+app.post('/update',function(req,res){
+
+    var entryid = req.body.entryid;
+    var date = req.body.date;
+    var starttime = req.body.starttime;
+    var endtime = req.body.endtime;
+    var project = req.body.project;
+    var notes = req.body.notes;
+    var tags = req.body.tags;
+
+    var fs = require("fs");
+    var file = "data/data.db";
+    var exists = fs.existsSync(file);
+
+    if(!exists) {
+        console.log("Error : DB file is missing");
+    }
+
+    var db = new sqlite3.Database(file);
+
+
+
+    db.serialize(function() {
+
+        var stmt = "UPDATE entries SET date = " + date + ", starttime = " + starttime + ", endtime = " + endtime + ", project = " + project + ", notes = " + notes + ", tags = " + tags + " WHERE entryid = "+ entryid;
+
+        db.run(stmt);
+    });
+
+    db.close();
+
+    res.end("complete");
+});
+
+
 
 var server = app.listen(6001, function () {
 

@@ -1,4 +1,8 @@
 
+var editing = false;
+var editNumber = 0;
+var currentNumEntries = 6;  // Save this to a cookie
+
 $(document).ready(function(){
 
     projects();
@@ -21,12 +25,28 @@ $(document).ready(function(){
 
     $('#date').val(currentDate);
 
+    //Populate the display table with a certain number of the latest entries
+    retrieveEntries(currentNumEntries);
+
+    // Check for a change to the number of entries
+    $('#numEntriesSubmit').click(function() {
+        currentNumEntries = $('#numEntries').val();
+        retrieveEntries(currentNumEntries);
+    });
 
     // On submit entry
     $("#form").submit( function(event ) {
-        postEntry();
+
+        if (!editing)
+            postEntry();
+        else
+            updateEntry();
+
         event.preventDefault();
     });
+
+    if (!editing)
+        $('#editlabel').css('display', 'none');
 });
 
 // Query the database all projects for autocomplete and initialize the projects field
@@ -80,8 +100,78 @@ function postEntry() {
         // Callback
         if( data === 'complete') {
 
-            window.location.href = '/entries';
+            window.location.href = '/';
         }
     });
 
+}
+
+
+function beginEdit(rowelement) {
+
+    editing = true;
+    editNumber = rowelement.children('.table-id').html();
+
+    $('#editlabel').css('display', 'block');
+    $('#editlabel').html('* editing : ' + editNumber + ' *');
+
+    // Enter values into form
+    $("#date").val( rowelement.children('.table-date').html());
+    $("#starttime").val( rowelement.children('.table-start').html());
+    $("#endtime").val( rowelement.children('.table-end').html());
+    $("#project").val( rowelement.children('.table-project').html());
+    $("#notes").val( rowelement.children('.table-notes').html());
+}
+
+function updateEntry() {
+
+    var date = "'" +  $("#date").val() + "'";
+    var starttime = "'" + $("#starttime").val() + "'";
+    var endtime = "'" + $("#endtime").val() + "'";
+    var project = "'" + $("#project").val().replace("'", "''") + "'";
+    var notes = "'" + $("#notes").val().replace("'", "''") + "'";
+    var tags = "";
+
+    // Get tags
+    var tagsArray = $('#tags').data('tags');
+
+    if (tagsArray) {
+        for (var i = 0; i < tagsArray.length; i++) {
+
+            if (i == 0)
+                tags += tagsArray[i].text;
+            else
+                tags += "," + tagsArray[i].text;
+        }
+    }
+
+    tags = "'" + tags + "'";
+
+    $.post("/update",{entryid: "'" + editNumber + "'", date: date,starttime: starttime,endtime: endtime,project: project,notes: notes,tags: tags}, function(data){
+
+        // Callback
+        if( data === 'complete') {
+
+            window.location.href = '/';
+        }
+    });
+}
+
+// Retrieve tables rows already html formated to enter into the display tables
+function retrieveEntries(amount) {
+
+    $.post("/retrieve",{amount : amount}, function(data){
+
+        // Callback
+        if( data != null) {
+
+            $("#table-body").html(data);
+
+            $('.table-row').click(function() {
+
+                var rowelement = $(this);
+                beginEdit(rowelement);
+            });
+        }
+    });
 }

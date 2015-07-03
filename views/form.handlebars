@@ -1,34 +1,51 @@
-{{> nav}}
+
+<p id="editlabel">* editing *</p>
 
 <form id="form" autocomplete="off">
+    <table>
+        <thead>
+            <tr>
+                <td>Date</td>
+                <td>Start</td>
+                <td>End</td>
+                <td>Project</td>
+                <td>Notes</td>
+                <td>Tags</td>
+            </tr>
+        </thead>
+        <tbody>
+            <tr>
+                <td><input id="date"></input></td>
+                <td><input id="starttime"></input></td>
+                <td><input id="endtime"></input></td>
+                <td><input id="project"></input></td>
+                <td><input id="notes"></input></td>
+                <td><input id="tags"></input></td>
+            </tr>
+        </tbody>
+    </table>
 
-    <h1> LOG </h1>
-
-  <ul>
-    <li>
-        DATE</br> <input id="date"></input>
-    </li>
-    <li>
-        START</br> <input id="starttime">
-    </br>END</br> <input id="endtime"></input>
-    </li>
-    <li>
-        PROJECT</br> <input id="project"></input>
-    </li>
-    <li>
-        Notes:</br> <input id="notes"></input>
-    </li>
-    <li>
-        Tags:</br> <input id="tags"></input>
-    </li>
-
-
-    <li>
-        <input type="submit" id="submit">
-    </li>
-  </ul>
-
+    <input type="submit" id="submit">
 </form>
+
+<input id="numEntries"></input><input type="submit" id="numEntriesSubmit">
+
+<table class="table">
+    <thead>
+        <tr>
+            <td>ID</td>
+            <td>Date</td>
+            <td>Start Time</td>
+            <td>End Time</td>
+            <td>Project</td>
+            <td>Notes</td>
+            <td>Tags</td>
+        </tr>
+    </thead>
+    <tbody id="table-body">
+
+    </tbody>
+</table>
 
 {{! Javascript }}
 <script src="/js/form.js"></script>
