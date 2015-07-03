@@ -297,7 +297,7 @@ app.post('/remove',function(req,res){
     db.serialize(function() {
 
         var stmt = "DELETE FROM entries WHERE entryid = "+ entryid;
- 
+  
         db.run(stmt);
     });
 
