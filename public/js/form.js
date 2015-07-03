@@ -48,6 +48,13 @@ $(document).ready(function(){
         }
     });
 
+    // Focus lost from PROJECT entry, auto fill the tags
+    $('#project').focusout(function() {
+
+        fillTags($("#project").val());
+    });
+
+
     // On submit entry
     $("#form").submit( function(event ) {
 
@@ -142,8 +149,6 @@ function beginEdit(rowelement) {
 
         $('#tags').addTag(tagArray[i]);
     }
-
-    console.log(tagArray);
 }
 
 function updateEntry() {
@@ -180,10 +185,24 @@ function updateEntry() {
     });
 }
 
-// Remove entry from database
-function removeEntry() {
+// Get tags and populate the tag section
+function fillTags(project) {
 
+    $.post("/retrievetags",{project: project}, function(data){
 
+        // Callback
+        if( data != null) {
+
+            var tagArray = data.split(',');
+
+            for (var i = 0; i < tagArray.length; i++) {
+
+                $('#tags').addTag(tagArray[i]);
+            }
+
+            $('#notes').focus();
+        }
+    });
 }
 
 // Retrieve tables rows already html formated to enter into the display tables

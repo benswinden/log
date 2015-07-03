@@ -119,6 +119,96 @@ app.post('/retrieve',function(req,res){
 
 });
 
+// Find all entries with the same project name as the one we just entered in the form
+// Store all tags previously submitted for this project, omitting duplicates
+app.post('/retrievetags',function(req,res){
+
+    var project = req.body.project;
+
+    var fs = require("fs");
+    var file = "data/data.db";
+    var exists = fs.existsSync(file);
+
+    var entryNum;
+    var storedTags = [];
+
+    if(!exists) {
+        console.log("Error : DB file is missing");
+    }
+
+    var db = new sqlite3.Database(file);
+
+    db.serialize(function() {
+
+        // Get the total number of entries in the database
+        db.get("SELECT Count(*) as num FROM entries", function(err, row) {
+
+            entryNum = row.num;
+        });
+
+        var numToAdd = 2;   // The number of recent entries to pull tags from
+        var indexToAdd = 0; // Keeps track of how many proper entries we've grabbed tags from
+
+        var index = 0;      // Keeps track of total entries we've checked
+
+        db.each("SELECT * FROM entries", function(err, row) {
+
+            index++;
+
+            // Check each row to see if the project corresponds to the one we are submitting in the form
+            if (indexToAdd < numToAdd && row != null && row.entryid != null && row.project == project) {
+
+                indexToAdd++;
+
+                // Make an array for each tag in this particular row
+                var currentRowTags = row.tags.split(',');
+
+                // For each tag
+                for (var i = 0; i < currentRowTags.length; i++) {
+
+                    if (currentRowTags[i] != "") {
+
+                        var found = false;
+
+                        // Check our stored array of tags to see if we already saved this tag
+                        for (var j = 0; j < storedTags.length; j++) {
+                            if (currentRowTags[i] == storedTags[j]) {
+                                found = true;
+                                break;
+                            }
+                        }
+
+                        // if we didn't find this tag, add it to stored list
+                        if (!found) {
+
+                            storedTags.push(currentRowTags[i]);
+                        }
+                    }
+                }
+            }
+
+            // Wait until we have grabbed the number of entries we want
+            if ( index >= entryNum) {
+
+                db.close();
+
+                var out = "";
+
+                for (var j = 0; j < storedTags.length; j++) {
+
+                    if (j == 0)
+                        out += storedTags[j];
+                    else
+                        out += "," + storedTags[j];
+                }
+
+                res.end(out);
+            }
+        });
+    });
+
+});
+
 app.post('/projects',function(req,res){
 
     var fs = require("fs");
@@ -297,7 +387,7 @@ app.post('/remove',function(req,res){
     db.serialize(function() {
 
         var stmt = "DELETE FROM entries WHERE entryid = "+ entryid;
-  
+
         db.run(stmt);
     });
 
