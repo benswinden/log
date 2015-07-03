@@ -34,6 +34,20 @@ $(document).ready(function(){
         retrieveEntries(currentNumEntries);
     });
 
+    // Click the remove button
+    $('#remove').click(function() {
+        if (editing) {
+            $.post("/remove",{entryid: editNumber}, function(data){
+
+                // Callback
+                if( data === 'complete') {
+
+                    window.location.href = '/';
+                }
+            });
+        }
+    });
+
     // On submit entry
     $("#form").submit( function(event ) {
 
@@ -121,6 +135,15 @@ function beginEdit(rowelement) {
     $("#endtime").val( rowelement.children('.table-end').html());
     $("#project").val( rowelement.children('.table-project').html());
     $("#notes").val( rowelement.children('.table-notes').html());
+
+    var tagArray = rowelement.children('.table-tags').html().split(',');
+
+    for (var i = 0; i < tagArray.length; i++) {
+
+        $('#tags').addTag(tagArray[i]);
+    }
+
+    console.log(tagArray);
 }
 
 function updateEntry() {
@@ -155,6 +178,12 @@ function updateEntry() {
             window.location.href = '/';
         }
     });
+}
+
+// Remove entry from database
+function removeEntry() {
+
+
 }
 
 // Retrieve tables rows already html formated to enter into the display tables

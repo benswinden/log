@@ -280,7 +280,31 @@ app.post('/update',function(req,res){
     res.end("complete");
 });
 
+app.post('/remove',function(req,res){
 
+    var entryid = req.body.entryid;
+
+    var fs = require("fs");
+    var file = "data/data.db";
+    var exists = fs.existsSync(file);
+
+    if(!exists) {
+        console.log("Error : DB file is missing");
+    }
+
+    var db = new sqlite3.Database(file);
+
+    db.serialize(function() {
+
+        var stmt = "DELETE FROM entries WHERE entryid = "+ entryid;
+
+        db.run(stmt);
+    });
+
+    db.close();
+
+    res.end("complete");
+});
 
 var server = app.listen(6001, function () {
 
