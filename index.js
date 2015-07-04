@@ -151,7 +151,7 @@ app.post('/retrievetags',function(req,res){
 
         var index = 0;      // Keeps track of total entries we've checked
 
-        db.each("SELECT * FROM entries", function(err, row) {
+        db.each("SELECT * FROM entries ORDER BY entryid DESC", function(err, row) {
 
             index++;
 

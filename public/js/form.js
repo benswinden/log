@@ -1,7 +1,7 @@
 
 var editing = false;
 var editNumber = 0;
-var currentNumEntries = 6;  // Save this to a cookie
+var currentNumEntries = 12;  // Save this to a cookie
 
 $(document).ready(function(){
 
@@ -132,6 +132,8 @@ function beginEdit(rowelement) {
 
     editing = true;
     editNumber = rowelement.children('.table-id').html();
+
+    $('#tags').clearAllTags();
 
     $('#editlabel').css('display', 'block');
     $('#editlabel').html('* editing : ' + editNumber + ' *');
