@@ -50,8 +50,8 @@ $(document).ready(function(){
 
     // Focus lost from PROJECT entry, auto fill the tags
     $('#project').focusout(function() {
-
-        fillTags($("#project").val());
+        if (!editing)
+            fillTags($("#project").val());
     });
 
 
