@@ -20,11 +20,10 @@ h1 {
     font-size: 1.5em;
 }
 
-
 form {
     margin-top: 2%;
     width: 30%;
-    xborder: 1px solid white;    
+    xborder: 1px solid white;
 }
 
 #form {
@@ -105,7 +104,7 @@ table {
 }
 
 table, th, td {
-    border: 1px solid black;
+    border: 1px solid #bababa;
     padding: 4px;
 
 }

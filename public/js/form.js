@@ -26,7 +26,7 @@ $(document).ready(function(){
     $('#date').val(currentDate);
 
     //Populate the display table with a certain number of the latest entries
-    retrieveEntries(currentNumEntries);
+    //retrieveEntries(currentNumEntries);
 
     // Check for a change to the number of entries
     $('#numEntriesSubmit').click(function() {

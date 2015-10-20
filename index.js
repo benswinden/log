@@ -48,12 +48,18 @@ app.get('/', auth, function (req, res, next) {
     res.render('form');
 });
 
+app.get('/display', function (req, res) {
+
+    res.render('display');
+});
+
 // Display entries from database
 app.get('/entries', auth, function (req, res, next) {
 
     res.render('entries');
 });
 
+// Retrieve tables rows, format to html
 app.post('/retrieve',function(req,res){
 
     var amount = req.body.amount;
@@ -118,6 +124,62 @@ app.post('/retrieve',function(req,res){
     });
 
 });
+
+// Retrieve tables rows, without format to html
+app.post('/retrievenohtml',function(req,res){
+
+    var amount = req.body.amount;
+
+    var fs = require("fs");
+    var file = "data/data.db";
+    var exists = fs.existsSync(file);
+
+    var entryNum;
+    var out = [];
+
+    if(!exists) {
+        console.log("Error : DB file is missing");
+    }
+
+    var db = new sqlite3.Database(file);
+
+    db.serialize(function() {
+
+        // Get the total number of entries in the database
+        db.get("SELECT Count(*) as num FROM entries", function(err, row) {
+
+            entryNum = row.num;
+
+            // Check whether the amount given is larger than the total number of entries
+            if (amount > entryNum) {
+                amount = entryNum;
+            }
+        });
+
+        var index = 0;
+
+        var query = "SELECT * FROM entries ORDER BY entryid DESC LIMIT " + amount;
+
+        db.each(query, function(err, row) {
+
+            index++;
+
+            if (row.entryid != null) {
+
+                out.push(row);
+            }
+
+            // Wait until all entries have been read before proceding
+            if (index >= amount) {
+
+                db.close();
+                res.send(out);
+            }
+        });
+    });
+
+});
+
 
 // Find all entries with the same project name as the one we just entered in the form
 // Store all tags previously submitted for this project, omitting duplicates
@@ -209,6 +271,7 @@ app.post('/retrievetags',function(req,res){
 
 });
 
+// Get all project names from the database to be used for autocomplete`
 app.post('/projects',function(req,res){
 
     var fs = require("fs");
@@ -303,6 +366,7 @@ app.post('/projects',function(req,res){
     });
 });
 
+// Submit entry to the database
 app.post('/entry',function(req,res){
 
     var date = req.body.date;
@@ -336,6 +400,7 @@ app.post('/entry',function(req,res){
     res.end("complete");
 });
 
+// Update an entry already in the database
 app.post('/update',function(req,res){
 
     var entryid = req.body.entryid;
@@ -370,6 +435,7 @@ app.post('/update',function(req,res){
     res.end("complete");
 });
 
+// Remove an entry from the database
 app.post('/remove',function(req,res){
 
     var entryid = req.body.entryid;
@@ -395,6 +461,7 @@ app.post('/remove',function(req,res){
 
     res.end("complete");
 });
+
 
 var server = app.listen(6001, function () {
 
