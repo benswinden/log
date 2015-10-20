@@ -51,7 +51,7 @@ function parseData(data) {
         // Loop through our data, getting all hours worked for the current day
         for (var j = 0; j < data.length; j++) {
 
-            if (data[j].date.substring(8,10) == currentDay && data[j].date.substring(5,7) == currentMonth) {
+            if (data[j].date.substring(8,10) == currentDay && data[j].date.substring(5,7) == (currentMonth + 1)) {
 
                 finalDataTimes[finalDataTimes.length - 1] += data[j].endtime - data[j].starttime;
             }

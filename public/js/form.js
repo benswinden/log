@@ -26,7 +26,7 @@ $(document).ready(function(){
     $('#date').val(currentDate);
 
     //Populate the display table with a certain number of the latest entries
-    //retrieveEntries(currentNumEntries);
+    retrieveEntries(currentNumEntries);
 
     // Check for a change to the number of entries
     $('#numEntriesSubmit').click(function() {
@@ -66,8 +66,10 @@ $(document).ready(function(){
         event.preventDefault();
     });
 
-    if (!editing)
+    if (!editing) {
         $('#editlabel').css('display', 'none');
+        $('#remove').css('display', 'none');
+    }
 });
 
 // Query the database all projects for autocomplete and initialize the projects field
@@ -136,6 +138,7 @@ function beginEdit(rowelement) {
     $('#tags').clearAllTags();
 
     $('#editlabel').css('display', 'block');
+    $('#remove').css('display', 'block');
     $('#editlabel').html('* editing : ' + editNumber + ' *');
 
     // Enter values into form
