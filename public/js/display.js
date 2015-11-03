@@ -1,78 +1,82 @@
 
-var numberOfDays = 7;
-var maxNumberOfHours = 12;      // Max number of hours to display on the y axis of the graph
+
+// =========
+// Variables
+// =========
+
+var defaultMaxNumberOfHours = 12;      // Max number of hours to display on the y axis of the graph by default
+var currentmaxNumberOfHours;
 
 daysInMonths = [31,28,31,30,31,30,31,31,30,31,30,31];
 
+var databaseEntries;
+
+// Date
+var currentDate = new Date();
+var today = currentDate.getDate();
+var currentMonth = currentDate.getMonth(); // 0 index, 0 = january
+
+var currentMode = 0; // 0 : Weekly   1 : Last Days
+
+// *******
 $(document).ready(function(){
 
-    retrieveWeekData(20);
+    retrieveData();
 });
+// *******
 
-function retrieveWeekData(amount) {
+function toggleMode() {
 
-    $.post("/retrievenohtml",{ amount : amount}, function(data){
+
+}
+
+// Retrieve data from the database, when complete, initialize the page
+function retrieveData() {
+
+    // Retrieve data
+    $.post("/retrievenohtml", function(data){
 
         // Callback
         if( data != null) {
-            console.log("Data returned")
-            parseData(data);
+            console.log("Data returned | Entries: " + data.length);
+            databaseEntries = data;
+
+            initialize();
         }
     });
 }
 
-function parseData(data) {
+// Initialize all the different components of the page individually
+function initialize() {
 
-    var finalDataLabels = [];
-    var finalDataTimes = [];
+    initializeChart();
+    initializeInfoDisplay();
+}
 
-    var currentDate = new Date();
-    var today = currentDate.getDate();
-    var currentMonth = currentDate.getMonth(); // 0 index, 0 = january
+// Chart - Weekly
+function initializeChart() {
 
-    // Loop for seven days, including today
-    for (var i = 0; i < numberOfDays; i++) {
+    // Get the desired dates to pull data from
+    var dates = getDatesWeekly();
+    // var dates = getDatesLastDays(7);
 
-        finalDataTimes.push(0);
+    var times = getHoursWorked(dates);
 
-        var currentDay = today - ((numberOfDays - 1) - i);
-
-        // If we have to move the day back to the end of the last month
-        if (currentDay < 1) {
-            var lastMonth = currentMonth - 1;
-            if (currentMonth == -1) lastMonth = 11;
-            currentDay = daysInMonths[lastMonth] + currentDay;
-        }
-
-        var currentDayString = '' + currentDay;     // Make a seperate string to push to the labels array, in order to preserve the original variable as a number
-        if (currentDay < 10) { currentDayString = '0' + currentDay }
-        finalDataLabels.push(currentDayString);
-
-        // Loop through our data, getting all hours worked for the current day
-        for (var j = 0; j < data.length; j++) {
-
-            if (data[j].date.substring(8,10) == currentDay && data[j].date.substring(5,7) == (currentMonth + 1)) {
-
-                finalDataTimes[finalDataTimes.length - 1] += data[j].endtime - data[j].starttime;
-            }
-        }
-
-        // If we have worked more than the set max number of hours to display on the y axis, increase that number
-        if (finalDataTimes[finalDataTimes.length - 1] > maxNumberOfHours) maxNumberOfHours = finalDataTimes[finalDataTimes.length - 1];
-    }
+    // Set the title
+    // $(".chart-title").text("Work per day : Last " + dates.length + " days");
 
     var finalData = {
-        labels: finalDataLabels,
+        labels: dates,
         datasets: [
             {
-                label: "My First dataset",
+                label: "Dataset",
                 fillColor: "rgba(220,220,220,0.2)",
                 strokeColor: "rgba(220,220,220,1)",
                 pointColor: "rgba(220,220,220,1)",
                 pointStrokeColor: "#fff",
                 pointHighlightFill: "#fff",
                 pointHighlightStroke: "rgba(220,220,220,1)",
-                data: finalDataTimes
+                data: times
             }
         ]
     };
@@ -132,6 +136,144 @@ function parseData(data) {
     });
 }
 
+// Text info
+function initializeInfoDisplay() {
+
+    var dates = getDatesWeekly();
+    var times = getHoursWorked(dates);
+
+    // title
+    //$(".info-display-title").text("Info : Last " + dates.length + " days");
+
+    var hoursThisWeek = 0;
+
+    for (var i = 0; i < times.length; i++) {
+        hoursThisWeek += times[i];
+    }
+
+    $('.info-display').append("<p>Total Hours: " + hoursThisWeek + " </p>");
+}
+
+
+// =========
+// Utilities
+// =========
+
+// Give the day to start at, number of days works backward from the start day, returns an array of labels that indicate the day number and an array of hours worked that day
+function getHoursWorked(dates) {
+
+    currentmaxNumberOfHours = defaultMaxNumberOfHours;  // Reset this value for using with charts
+
+    var times = [];
+
+    // Loop for seven days, including today
+    for (var i = 0; i < dates.length; i++) {
+
+        times.push(0);
+
+        // Turn the date into integers, check for leading zeroes
+        var month = parseInt(dates[i].substring(0,2));
+        var day = parseInt(dates[i].substring(3,5));
+
+        // Loop through our data, getting all hours worked for the current day
+        for (var j = 0; j < databaseEntries.length; j++) {
+
+            if (databaseEntries[j].date.substring(5,7) == month && databaseEntries[j].date.substring(8,10) == day) {
+
+                times[times.length - 1] += databaseEntries[j].endtime - databaseEntries[j].starttime;
+            }
+        }
+
+        // If we have worked more than the set max number of hours to display on the y axis, increase that number
+        if (times[times.length - 1] > currentmaxNumberOfHours) currentmaxNumberOfHours = times[times.length - 1];
+    }
+
+    return times;
+
+}
+
+// Get the date numbers in a given set: From a weekly period, monday - sunday
+function getDatesWeekly() {
+
+    // Init labels with the correct days
+    var currentDayOfTheWeek = currentDate.getDay();
+    var dates = [];
+
+    // getDay returns 0: Sunday, 6: Saturday. We want sunday to be 6
+    if (currentDayOfTheWeek == 0) currentDayOfTheWeek = 6;
+    else currentDayOfTheWeek -= 1;
+
+    // Add days before current day
+    for (var i = 0; i < currentDayOfTheWeek; i++) {
+
+        var month = currentMonth;
+        var day = today - (currentDayOfTheWeek - i);
+
+        // If we have to move the day back to the end of the last month
+        if (day < 1) {
+            month = currentMonth - 1;
+            if (month == -1) month = 11;
+            day = daysInMonths[month] + day;
+        }
+
+        if (day < 10) { day = '0' + day }
+        month += 1; if (month < 10) { month = '0' + month }
+        var date = month + "." + day;
+        dates.push(date)
+    }
+    // Add days including today and days after
+    for (var j = 0; j < 7 - currentDayOfTheWeek; j++) {
+
+        var month = currentMonth;
+        var day = today + j;
+
+        // If we have to move the day forward to the start of the next month
+        if (day > daysInMonths[currentMonth]) {
+
+            var month = currentMonth + 1;
+            if (month > 11) month = 0;
+
+            day = day - daysInMonths[currentMonth];
+        }
+
+        if (day < 10) { day = '0' + day }
+        month += 1; if (month < 10) { month = '0' + month }
+        var date = month + "." + day;
+        dates.push(date)
+    }
+
+    return dates;
+}
+
+// DOES NOT WORK PROPERLY WHEN CHANGING MONTHS
+function getDatesLastDays(numberOfDays) {
+
+    var dates = [];
+
+    // Loop for seven days, including today
+    for (var i = 0; i < numberOfDays; i++) {
+
+        var month = currentMonth;
+        var day = today - ((numberOfDays - 1) - i);
+
+        // If we have to move the day back to the end of the last month
+        if (day < 1) {
+            month = currentMonth - 1;
+            if (month == -1) month = 11;
+            day = daysInMonths[month] + day;
+        }
+
+        // Format with leading zeroes and push the day and month together
+        if (day < 10) { day = '0' + day }
+        month += 1; if (month < 10) { month = '0' + month }
+        var date = month + "." + day;
+        dates.push(date)
+    }
+
+    return dates;
+}
+
+// Global defaults for Chart.js charts
 function setChartDefaults() {
 
     Chart.defaults.global = {
@@ -160,7 +302,7 @@ function setChartDefaults() {
 
         // ** Required if scaleOverride is true **
         // Number - The number of steps in a hard coded scale
-        scaleSteps: maxNumberOfHours,
+        scaleSteps: currentmaxNumberOfHours,
         // Number - The value jump in the hard coded scale
         scaleStepWidth: 1,
         // Number - The scale starting value

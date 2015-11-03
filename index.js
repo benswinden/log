@@ -128,8 +128,6 @@ app.post('/retrieve',function(req,res){
 // Retrieve tables rows, without format to html
 app.post('/retrievenohtml',function(req,res){
 
-    var amount = req.body.amount;
-
     var fs = require("fs");
     var file = "data/data.db";
     var exists = fs.existsSync(file);
@@ -149,16 +147,11 @@ app.post('/retrievenohtml',function(req,res){
         db.get("SELECT Count(*) as num FROM entries", function(err, row) {
 
             entryNum = row.num;
-
-            // Check whether the amount given is larger than the total number of entries
-            if (amount > entryNum) {
-                amount = entryNum;
-            }
         });
 
         var index = 0;
 
-        var query = "SELECT * FROM entries ORDER BY entryid DESC LIMIT " + amount;
+        var query = "SELECT * FROM entries ORDER BY entryid DESC";
 
         db.each(query, function(err, row) {
 
@@ -170,7 +163,7 @@ app.post('/retrievenohtml',function(req,res){
             }
 
             // Wait until all entries have been read before proceding
-            if (index >= amount) {
+            if (index >= entryNum) {
 
                 db.close();
                 res.send(out);
