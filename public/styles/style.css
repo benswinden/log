@@ -44,7 +44,7 @@ nav a {
 form {
    margin-top: 2%;
    width: 400px;
-   height: 325px;
+   xheight: 325px;
    xborder: 1px solid white;
 }
 
@@ -167,11 +167,6 @@ th, td {
     padding-top: 25px;
 }
 
-.submitdiv {
-    margin-top: 75px;
-    width: 365px;
-    50px;
-}
 
 #submit {
     font-size: 11px;
@@ -179,7 +174,6 @@ th, td {
     border: 1px outset #bababa;
     background-color: white;
     margin-right: 7px;
-    float: left;
 }
 
 #remove {
@@ -215,7 +209,7 @@ li .tag-this {
     background-color :#f5f5f5;
     padding:5px;
     width:365px;
-    height:25%;
+    height:65px;
     overflow-y: auto;
     margin: auto;
     border-radius: 2px;

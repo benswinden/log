@@ -15,6 +15,7 @@ var databaseEntries;
 var currentDate = new Date();
 var today = currentDate.getDate();
 var currentMonth = currentDate.getMonth(); // 0 index, 0 = january
+var todaysDateIndex;
 
 var currentMode = 0; // 0 : Weekly   1 : Last Days
 
@@ -86,7 +87,8 @@ function initializeChart() {
     // Get context with jQuery - using jQuery's .get() method.
     var ctx = $("#canvas").get(0).getContext("2d");
     // This will get the first returned node in the jQuery collection.
-    var myLineChart = new Chart(ctx).Line(finalData, {
+
+    var chart = new Chart(ctx).Line(finalData, {
 
         ///Boolean - Whether grid lines are shown across the chart
         scaleShowGridLines : true,
@@ -132,8 +134,10 @@ function initializeChart() {
 
         //String - A legend template
         legendTemplate : "<ul class=\"<%=name.toLowerCase()%>-legend\"><% for (var i=0; i<datasets.length; i++){%><li><span style=\"background-color:<%=datasets[i].strokeColor%>\"></span><%if(datasets[i].label){%><%=datasets[i].label%><%}%></li><%}%></ul>"
-
     });
+
+    chart.datasets[0].points[todaysDateIndex].fillColor ="#00E68A";
+    chart.update();
 }
 
 // Text info
@@ -242,10 +246,10 @@ function getDatesWeekly() {
         dates.push(date)
     }
 
+    todaysDateIndex = currentDayOfTheWeek;
     return dates;
 }
 
-// DOES NOT WORK PROPERLY WHEN CHANGING MONTHS
 function getDatesLastDays(numberOfDays) {
 
     var dates = [];
@@ -270,6 +274,7 @@ function getDatesLastDays(numberOfDays) {
         dates.push(date)
     }
 
+    todaysDateIndex = dates.length - 1;
     return dates;
 }
 
